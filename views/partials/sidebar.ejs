@@ -7,7 +7,7 @@
       </button>
       <div class="dropdown-container">
         <% for(let i = 0; i < user.length; i++) { %>
-          <a href="#"> <%=user[i].name%></a>
+          <a href="/dashboard/<%=user[i].recruiters_id%>/user/<%=user[i].id%>"> <%=user[i].name%></a>
         <% }%>
       </div>
       <button class="dropdown-btn">Tests
