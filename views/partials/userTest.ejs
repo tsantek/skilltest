@@ -1,0 +1,24 @@
+<div class="dash-item">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Test</th>
+            <th scope="col">Result</th>
+            <th scope="col">Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% for(let i = 0; i < result.length; i++){%>
+          <tr>
+            <th scope="row"><%=result[i].user_Name%></th>
+            <td><%=result[i].email%></td>
+            <td><%=result[i].name%></td>
+            <td><%=result[i].correct%>/<%=result[i].total%></td>
+            <td><div class="status-notstarted">Not Started</div></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+  </div>  
