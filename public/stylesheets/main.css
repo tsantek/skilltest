@@ -1,3 +1,50 @@
-.btn-primary {
-  background-color: purple !important;
+.landing-jumbotron {
+  background-color: #4E3B77;
+  color: white;
+  text-align: center;
+  padding-bottom: 10%;
+  padding-top: 5%;
+}
+
+.landing-jumbotron .btn-primary {
+  background-color: #FF007F;
+  border: #FF007F;
+}
+
+.sell {
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  color: #555555;
+}
+
+.sell form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+}
+
+.formcont {
+  display: flex;
+  justify-content: center;
+}
+
+.right {
+  border-left: solid gray;
+}
+
+.sell .btn-primary {
+  background-color: #FF007F;
+  border: #FF007F;
+  margin-top: 10px;
+}
+
+.icons {
+  text-align: center;
+  color: #555555;
+}
+
+.icons .col {
+  margin: 10px;
 }
