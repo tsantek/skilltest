@@ -14,16 +14,18 @@ module.exports = {
         res.render("pages/register");
     },
     dashboard: (req, res) => {
-        res.render("pages/landing");
+        // MISSING REDIRECT ROUTE 
+        res.send("HELLO");
     },
-    // registerRecruiters: (req, res) => {
-    //     knex('recruiters')
-    //         .insert(req.body)
-    //         .then(() => {
-    //             // MISSING REDIRECT ROUTE 
-    //             res.redirect("/login");
-    //         })
-    // },
+    registerRecruiters: (req, res) => {
+        console.log(req.body)
+        knex('recruiters')
+            .insert(req.body)
+            .then(() => {
+                // MISSING REDIRECT ROUTE 
+                res.redirect("/dashboard");
+            })
+    },
     // loginRecruiters: (req, res) => {
     //     knex('recruiters')
     //         .where('email', req.body.email).then((results) => {

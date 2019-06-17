@@ -6,9 +6,11 @@ module.exports = function(app) {
     app.get('/login', template.loginPage);
     app.get('/register', template.registerPage);
 
-    app.get('/landing', template.dashboard);
-    app.use(authMiddleware);
 
+    app.post('/registerRecruiters', template.registerRecruiters);
+
+    app.use(authMiddleware);
+    app.get('/dashboard', template.dashboard);
 
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {
