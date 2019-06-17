@@ -13,7 +13,7 @@ module.exports = function(app) {
 
     app.use(authMiddleware);
     app.get('/dashboard/:id', template.dashboard);
-    app.get('/dashboard/user/:id', template.userDashboard);
+    app.get('/dashboard/:rid/user/:uid', template.userDashboard);
 
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {
