@@ -6,6 +6,7 @@ module.exports = function(app) {
     app.get('/login', template.loginPage);
     app.get('/register', template.registerPage);
 
+    app.get('/landing', template.dashboard);
     app.use(authMiddleware);
 
 

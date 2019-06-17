@@ -13,6 +13,9 @@ module.exports = {
     registerPage: (req, res) => {
         res.render("pages/register");
     },
+    dashboard: (req, res) => {
+        res.render("pages/landing");
+    },
     // registerRecruiters: (req, res) => {
     //     knex('recruiters')
     //         .insert(req.body)
