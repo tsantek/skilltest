@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+    <title>Skill Test</title>
+  </head>
+  <body>
+    <% include ../partials/nav %>
+    <div class="main">
+      <div class="board form">
+        <h1>Register</h1>
+        <form action="/register" method="post" id="regform">
+          <input type="text" name="name" placeholder="Name">
+          <input type="email" name="email" placeholder="Email">
+          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="c_password" placeholder="Confirm Password">
+          <input class="btn" type="submit">
+        </form>
+      </div>
+    </div>
+    <% include ../partials/bs %>
+  </body>
+</html>
+
