@@ -81,10 +81,7 @@ html, body {
 .sidenav-wrapper {
   height: 100%;
   width: 200px;
-  top: 0;
-  left: 0;
   background-color: rgb(37, 46, 79);
-  overflow-x: hidden;
   padding-top: 20px;
 }
 
@@ -109,11 +106,6 @@ html, body {
 }
 
 /* Main content */
-.main {
-  margin-left: 200px; /* Same as the width of the sidenav */
-  font-size: 20px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
 
 /* Add an active class to the active dropdown button */
 .active {
