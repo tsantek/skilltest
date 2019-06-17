@@ -1,0 +1,81 @@
+.main-container-index {
+    padding-top: 20px;
+}
+
+.main-container-index h1 {
+    text-align: center;
+    padding-bottom: 40px;
+    margin-top: -25px;
+}
+
+.card-body {
+    text-align: center
+}
+
+.card-body img {
+    height: 250px;
+}
+
+.btn-book {
+    margin-top: 20px;
+}
+
+.book {
+    text-align: right;
+}
+
+.main-container-book h1 {
+    text-align: center;
+}
+
+.main-container-book {
+    padding-top: 20px;
+}
+
+.main-container-book form {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.container-login {
+    text-align: center;
+}
+
+.container-login h2 {
+    padding-top: 20px;
+}
+
+.main-container-dashboard h1 {
+    text-align: center;
+}
+
+.main-container-dashboard nav {
+    padding-top: 50px;
+}
+
+.main-container-patients {
+    text-align: center;
+}
+
+.btn-change {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.nav-border {
+    border: solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.nav-border a:nth-child(2) {
+    border-left: solid black;
+}
+
+.nav-border a:nth-child(3) {
+    border-left: solid black;
+}
+
+.nav-container {
+    margin: 0 auto;
+}
