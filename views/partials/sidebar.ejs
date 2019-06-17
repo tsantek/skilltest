@@ -5,17 +5,17 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-container">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
+        <% for(let i = 0; i < user.length; i++) { %>
+          <a href="#"> <%=user[i].name%></a>
+        <% }%>
       </div>
       <button class="dropdown-btn">Tests
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-container">
-        <a style="display:block;" href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
+           <% for(let i = 0; i < test.length; i++) { %>
+          <a href="#"> <%=test[i].name%></a>
+        <% }%>
       </div>
       <a href="#contact">Create Test
         <i class="fa fa-plus"></i>

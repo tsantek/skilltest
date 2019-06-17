@@ -18,9 +18,12 @@ module.exports = {
         knex('users')
             .where('recruiters_id', req.params.id)
             .then((user) => {
-                res.render("pages/dashboard", { user });
+                knex('tests')
+                    .where('recruiters_id', req.params.id)
+                    .then((test) => {
+                        res.render("pages/dashboard", { user, test });
+                    })
             })
-
     },
     // REGISTER POST
     registerRecruiters: (req, res) => {
