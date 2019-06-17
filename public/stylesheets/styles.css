@@ -125,6 +125,10 @@ html, body {
   float: right;
   padding-right: 8px;
 }
+.fa-plus {
+  float: right;
+  padding-right: 8px;
+}
 
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
