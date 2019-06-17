@@ -14,7 +14,7 @@ module.exports = {
         res.render("pages/register");
     },
     dashboard: (req, res) => {
-        // MISSING REDIRECT ROUTE 
+        knex('users')
         res.render("pages/dashboard");
     },
     registerRecruiters: (req, res) => {
@@ -24,7 +24,7 @@ module.exports = {
             .then((user) => {
                 req.session.user_id = user[0].id;
                 req.session.save(() => {
-                    res.redirect(`/dashboard`);
+                    res.redirect(`/dashboard/${user[0].id}`);
                 })
             })
     },
@@ -39,7 +39,7 @@ module.exports = {
                 if (user.password === req.body.password) {
                     req.session.user_id = user.id;
                     req.session.save(() => {
-                        res.redirect(`/dashboard`);
+                        res.redirect(`/dashboard/${user.id}`);
                     })
                 } else {
                     res.redirect("/login");
