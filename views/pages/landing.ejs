@@ -8,13 +8,55 @@
     <header>
       <% include ../partials/nav.ejs %>
     </header>
-    <div class="jumbotron">
+    <div class="jumbotron landing-jumbotron">
       <h1 class="display-4">Find top talent for the future of your company!</h1>
       <p class="lead">Create simple tests that check for the skills that you need!  Never wonder if a candidate has the right skills again.</p>
       <hr class="my-4">
       <p>Create a free account to get started today!</p>
       <a class="btn btn-primary btn-lg" href="#" role="button">Sign Me Up!</a>
     </div>
+
+    <h3 class='sell'> How can Skill Test work for me? </h3>
+    <div class='container sell'>
+      <div class='row'>
+        <div class='col'>
+          <h2>Skill Test for Recruiters</h2>
+          <p>Log in. Create tests. Find the best candidates!</p>
+          <a class="btn btn-primary btn-lg" href="#" role="button">Get Started!</a>
+        </div>
+        <div class='col right'>
+          <h2>Skill Test for Candidates</h2>
+          <p>Have you been sent a link to a test? Enter your code here!</p>
+          <div class='formcont'>
+            <form class="" action="/test" method="post">
+              <input name='testcode' type='text' placeholder='Your Unique Code'>
+              <input type='submit' value='Good Luck!' class='btn btn-primary btn-lg'>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container icons">
+      <div class='row'>
+        <div class='col'>
+          <img class="" src="https://dvokhk8ohqhd8.cloudfront.net/assets/landing/how-it-works/building-ac3ecc885161c843618cc22c68212cc6ccc500ddf7a3a718992d75014c569713.svg" alt="Building" />
+          <h3 class='text-center leading-normal mobile:text-grey-darker'>Leading</h3>
+          <p class='text-center text-sm mobile:text-grey-darker'>companies trust Skill Test</p>
+        </div>
+        <div class='col'>
+          <img class="" src="https://dvokhk8ohqhd8.cloudfront.net/assets/landing/how-it-works/matches-4fdf31d451a2dc03890669978ff6433447a5155a219c0b6df2eb725652a6aedf.svg" alt="Matches" />
+          <h3 class='text-center leading-normal mobile:text-grey-darker'>Rockstar</h3>
+          <p class='text-center text-sm mobile:text-grey-darker'>candidates prove themselves here</p>
+        </div>
+        <div class='col'>
+          <img class="" src="https://dvokhk8ohqhd8.cloudfront.net/assets/landing/how-it-works/job-offer-160ac6594fb8f3200d97848f7a4b02a78b49a22c3d1bd4afbad404431b62cf40.svg" alt="Job offer" />
+          <h3 class='text-center leading-normal mobile:text-grey-darker'>Signed</h3>
+          <p class='text-center text-sm mobile:text-grey-darker'>find the right fit in half the time</p>
+        </div>
+      </div>
+    </div>
+
 
     <% include ../partials/bs.ejs %>
   </body>
