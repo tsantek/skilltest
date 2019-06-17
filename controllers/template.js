@@ -5,7 +5,7 @@ module.exports = {
     index: (req, res) => {
         res.render("pages/landing");
     },
-    // LOGIN PAGE 
+    // LOGIN PAGE
     loginPage: (req, res) => {
         res.render("pages/login");
     },
@@ -21,13 +21,18 @@ module.exports = {
                 knex('tests')
                     .where('recruiters_id', req.params.id)
                     .then((test) => {
-                        knex(`tests_complited`)
-                            .join('users', 'tests_complited.test_id', 'users.id')
-                            .join('tests', 'tests_complited.test_id', 'tests.id')
-                            .select('tests.name', 'tests_complited.total', 'tests_complited.correct', 'users.name AS user_Name', 'users.email')
-                            .where('tests_complited.recruiters_id', req.params.id)
-                            .then((result) => {
-                                res.render("pages/dashboard", { user, test, result });
+                        knex('recruiters')
+                            .where('id', req.params.id)
+                            .then((recruiter) => {
+                                knex(`tests_complited`)
+                                    .join('users', 'tests_complited.test_id', 'users.id')
+                                    .join('tests', 'tests_complited.test_id', 'tests.id')
+                                    .select('tests.name', 'tests_complited.total', 'tests_complited.correct', 'users.name AS user_Name', 'users.email')
+                                    .where('tests_complited.recruiters_id', req.params.id)
+                                    .then((result) => {
+                                        console.log(recruiter)
+                                        res.render("pages/dashboard", { user, test, result, recruiter });
+                                    })
                             })
                     })
             })
@@ -44,7 +49,7 @@ module.exports = {
                 })
             })
     },
-    // LOGIN POST 
+    // LOGIN POST
     loginRecruiters: (req, res) => {
         knex('recruiters')
             .where('email', req.body.email).then((results) => {
