@@ -5,6 +5,7 @@ module.exports = function(app) {
     app.get('/', template.index);
     app.get('/login', template.loginPage);
     app.get('/register', template.registerPage);
+    app.get('/logout', template.logout);
 
 
     app.post('/registerRecruiters', template.registerRecruiters);

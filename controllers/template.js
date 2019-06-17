@@ -9,14 +9,20 @@ module.exports = {
     loginPage: (req, res) => {
         res.render("pages/login");
     },
-    //  SIGNUP 
+    //  SIGNUP  GET
     registerPage: (req, res) => {
         res.render("pages/register");
     },
+    // DASHBOARD GET
     dashboard: (req, res) => {
         knex('users')
-        res.render("pages/dashboard");
+            .where('recruiters_id', req.params.id)
+            .then((user) => {
+                res.render("pages/dashboard", { user });
+            })
+
     },
+    // REGISTER POST
     registerRecruiters: (req, res) => {
         knex('recruiters')
             .insert(req.body)
@@ -28,6 +34,7 @@ module.exports = {
                 })
             })
     },
+    // LOGIN POST 
     loginRecruiters: (req, res) => {
         knex('recruiters')
             .where('email', req.body.email).then((results) => {
@@ -45,5 +52,13 @@ module.exports = {
                     res.redirect("/login");
                 }
             })
+    },
+    logout: (req, res) => {
+        req.session.destroy((err) => {
+            if (err) {
+                return console.log(err);
+            }
+            res.redirect('/');
+        });
     },
 }
