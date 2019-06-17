@@ -3,12 +3,6 @@ const knex = require("../db/knex.js");
 module.exports = {
     // CHANGE ME TO AN ACTUAL FUNCTION
     index: (req, res) => {
-<<<<<<< HEAD
-                res.render("pages/login");
-    
-
-    }
-=======
         res.render("pages/landing");
     },
     // loginPage: (req, res) => {
@@ -43,5 +37,4 @@ module.exports = {
     //             }
     //         })
     // },
->>>>>>> 23afec6cf7f25dd6f220b5349396acc90f919e58
 }
