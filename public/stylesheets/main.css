@@ -1,89 +1,93 @@
+.nav-item-right {
+    padding: 0 5px 0 0;
+}
+
 .landing-jumbotron {
-  background-color: #4E3B77;
-  color: white;
-  text-align: center;
-  padding-bottom: 10%;
-  padding-top: 5%;
-  margin-bottom: 0;
+    background-color: #4E3B77;
+    color: white;
+    text-align: center;
+    padding-bottom: 10%;
+    padding-top: 5%;
+    margin-bottom: 0;
 }
 
 .landing-jumbotron .btn-primary {
-  background-color: #FAA275;
-  border: #FAA275;
+    background-color: #FAA275;
+    border: #FAA275;
 }
 
 .sell {
-  text-align: center;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  color: #555555;
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    color: #555555;
 }
 
 .sells {
-  background-color: lightgray;
+    background-color: lightgray;
 }
 
 .sell form {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
 }
 
 .formcont {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .right {
-  border-left: solid gray;
+    border-left: solid gray;
 }
 
 .sell .btn-primary {
-  background-color: #4E3B77;
-  border: #4E3B77;
-  margin-top: 10px;
+    background-color: #4E3B77;
+    border: #4E3B77;
+    margin-top: 10px;
 }
 
 .background-triangle {
-  width: 100vw;
-  height: 0;
-  border-left: 50vw solid transparent;
-  border-right: 50vw solid transparent;
-  border-top: 100px solid lightgray;
+    width: 100vw;
+    height: 0;
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-top: 100px solid lightgray;
 }
 
 .icons {
-  text-align: center;
-  color: #555555;
+    text-align: center;
+    color: #555555;
 }
 
 .icons img {
-  width: 10vw;
+    width: 10vw;
 }
 
 .icons .col {
-  margin: 10px;
+    margin: 10px;
 }
 
 .testtwo img {
-  width: 15vw;
-  margin-bottom: 10px;
+    width: 15vw;
+    margin-bottom: 10px;
 }
 
 .testtwo .bot {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: transparent;
-  border: none;
-  color: #555555;
-  padding-top: 40px;
-  padding-bottom: 40px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    color: #555555;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .call {
-  border-bottom: solid #555555;
+    border-bottom: solid #555555;
 }
