@@ -1,5 +1,6 @@
 //Update the name of the controller below and rename the file.
 const template = require("../controllers/template.js")
+const user = require("../controllers/user.js")
 module.exports = function(app) {
 
     app.get('/', template.index);
@@ -13,7 +14,7 @@ module.exports = function(app) {
 
     app.use(authMiddleware);
     app.get('/dashboard/:id', template.dashboard);
-    app.get('/dashboard/:id/user/:id', user.userDashboard);
+    app.get('/dashboard/:rid/user/:uid', user.userDashboard);
 
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {
