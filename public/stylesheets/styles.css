@@ -1,5 +1,5 @@
 .nav-item-right {
-  padding: 0 5px 0 0;
+  padding: 0 8px 0 0;
 }
 
 html, body {
@@ -44,12 +44,12 @@ html, body {
   padding: 18px;
   text-align: left;
 }
-h1 {
+.user-form h1 {
   margin: 0 0 10px 5px;
   color: white;
   text-shadow: 20px;
 }
-form .btn {
+.user-form .btn {
   padding: 20px;
   margin: 10px;
   border: none;
@@ -58,7 +58,7 @@ form .btn {
   background-color: #A2548A;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 }
-form .btn:hover {
+.user-form .btn:hover {
   transition-duration: 1s;
   background-color: rgb(130, 130, 130);
 }

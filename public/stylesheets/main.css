@@ -4,11 +4,12 @@
   text-align: center;
   padding-bottom: 10%;
   padding-top: 5%;
+  margin-bottom: 0;
 }
 
 .landing-jumbotron .btn-primary {
-  background-color: #FF007F;
-  border: #FF007F;
+  background-color: #FAA275;
+  border: #FAA275;
 }
 
 .sell {
@@ -16,6 +17,10 @@
   padding-top: 5%;
   padding-bottom: 5%;
   color: #555555;
+}
+
+.sells {
+  background-color: lightgray;
 }
 
 .sell form {
@@ -35,9 +40,17 @@
 }
 
 .sell .btn-primary {
-  background-color: #FF007F;
-  border: #FF007F;
+  background-color: #4E3B77;
+  border: #4E3B77;
   margin-top: 10px;
+}
+
+.background-triangle {
+  width: 100vw;
+  height: 0;
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-top: 100px solid lightgray;
 }
 
 .icons {
@@ -45,6 +58,32 @@
   color: #555555;
 }
 
+.icons img {
+  width: 10vw;
+}
+
 .icons .col {
   margin: 10px;
+}
+
+.testtwo img {
+  width: 15vw;
+  margin-bottom: 10px;
+}
+
+.testtwo .bot {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  color: #555555;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.call {
+  border-bottom: solid #555555;
 }
