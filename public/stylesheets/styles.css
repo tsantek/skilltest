@@ -1,6 +1,7 @@
 .nav-item-right {
   padding: 0 5px 0 0;
 }
+.nav-item
 
 .navbar {
   height: 8vh;
@@ -67,8 +68,6 @@ html, body {
   transition-duration: 1s;
   background-color: rgb(130, 130, 130);
 }
-<<<<<<< HEAD
-=======
 
 /* Dashboard Styles */
 .dash-main {
@@ -122,13 +121,16 @@ button:focus {
   color: #f1f1f1;
 }
 
-/* Main content */
+.dropdown-container a {
+  transition-duration: 1s;
+}
 
 /* Add an active class to the active dropdown button */
 .active {
   background-color: rgb(43, 56, 101);
   color: white;
   outline: none;
+  display: block;
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
@@ -153,4 +155,3 @@ button:focus {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
->>>>>>> 0a90696dc4230dc3492f7f707ab8eaa4ac599b1a
