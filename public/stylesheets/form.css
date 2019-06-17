@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+width: 50%;
+margin-top: 40px;
+}
+
+.btn-primary {
+  background-color: #4E3B77 !important;
+  border: #4E3B77
+}
