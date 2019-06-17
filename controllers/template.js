@@ -15,7 +15,11 @@ module.exports = {
     },
     dashboard: (req, res) => {
         // MISSING REDIRECT ROUTE 
+<<<<<<< HEAD
         res.render('pages/dashboard')
+=======
+        res.render("pages/dashboard");
+>>>>>>> df9ced74769eea557461430515d06079b82f5d8d
     },
     registerRecruiters: (req, res) => {
         knex('recruiters')
