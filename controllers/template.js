@@ -18,12 +18,14 @@ module.exports = {
         res.send("HELLO");
     },
     registerRecruiters: (req, res) => {
-        console.log(req.body)
         knex('recruiters')
             .insert(req.body)
-            .then(() => {
-                // MISSING REDIRECT ROUTE 
-                res.redirect("/dashboard");
+            .returning('*')
+            .then((user) => {
+                req.session.user_id = user[0].id;
+                req.session.save(() => {
+                    res.redirect(`/dashboard`);
+                })
             })
     },
     loginRecruiters: (req, res) => {
