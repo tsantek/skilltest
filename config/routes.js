@@ -8,6 +8,7 @@ module.exports = function(app) {
 
 
     app.post('/registerRecruiters', template.registerRecruiters);
+    app.post('/loginRecruiters', template.loginRecruiters);
 
     app.use(authMiddleware);
     app.get('/dashboard', template.dashboard);

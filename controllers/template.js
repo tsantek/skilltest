@@ -26,24 +26,22 @@ module.exports = {
                 res.redirect("/dashboard");
             })
     },
-    // loginRecruiters: (req, res) => {
-    //     knex('recruiters')
-    //         .where('email', req.body.email).then((results) => {
-    //             let user = results[0];
-    //             if (!user) {
-    //                 res.redirect('/login');
-    //                 return;
-    //             }
-    //             if (user.password === req.body.password) {
-    //                 req.session.user_id = user.doc_id;
-    //                 req.session.save(() => {
-    //                     // MISSING REDIRECT ROUTE 
-    //                     res.redirect(`/`);
-    //                 })
-    //             } else {
-    //                 // MISSING REDIRECT ROUTE 
-    //                 res.redirect("/login");
-    //             }
-    //         })
-    // },
+    loginRecruiters: (req, res) => {
+        knex('recruiters')
+            .where('email', req.body.email).then((results) => {
+                let user = results[0];
+                if (!user) {
+                    res.redirect('/login');
+                    return;
+                }
+                if (user.password === req.body.password) {
+                    req.session.user_id = user.id;
+                    req.session.save(() => {
+                        res.redirect(`/dashboard`);
+                    })
+                } else {
+                    res.redirect("/login");
+                }
+            })
+    },
 }
