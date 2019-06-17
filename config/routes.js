@@ -15,11 +15,6 @@ module.exports = function(app) {
     app.use(authMiddleware);
     app.get('/dashboard/:id', template.dashboard);
 
-    app.get('/dashboard/create/:id', test.create);
-    app.post('/create/question/:id', test.question);
-    app.post('/create/questionnext/:id', test.questionnext);
-    // app.get('/dashboard/:id/user/:id', user.userDashboard);
-
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {
             res.redirect("/login");

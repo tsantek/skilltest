@@ -21,7 +21,19 @@ module.exports = {
                 knex('tests')
                     .where('recruiters_id', req.params.id)
                     .then((test) => {
-                        res.render("pages/dashboard", { user, test});
+                        knex('recruiters')
+                            .where('id', req.params.id)
+                            .then((recruiter) => {
+                                knex(`tests_complited`)
+                                    .join('users', 'tests_complited.test_id', 'users.id')
+                                    .join('tests', 'tests_complited.test_id', 'tests.id')
+                                    .select('tests.name', 'tests_complited.total', 'tests_complited.correct', 'users.name AS user_Name', 'users.email')
+                                    .where('tests_complited.recruiters_id', req.params.id)
+                                    .then((result) => {
+                                        console.log(recruiter)
+                                        res.render("pages/dashboard", { user, test, result, recruiter });
+                                    })
+                            })
                     })
             })
     },
@@ -63,5 +75,32 @@ module.exports = {
             }
             res.redirect('/');
         });
+    },
+    userDashboard: (req, res) => {
+        // knex('users')
+        //   .join('tests_complited', 'users.id', '=', 'tests_complited.user_id')
+        //   .where('tests_complited.recruiters_id', req.params.rid)
+        //   .where('users.id', req.params.uid)
+        //   .then(test => {
+        //     console.log('this is test', test)
+        //     res.render("/pages/login")
+        //   })
+        knex('users')
+            .where('recruiters_id', req.params.rid)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.rid)
+                    .then((test) => {
+                        knex(`tests_complited`)
+                            .join('users', 'tests_complited.test_id', 'users.id')
+                            .join('tests', 'tests_complited.test_id', 'tests.id')
+                            .select('tests.name', 'tests_complited.total', 'tests_complited.correct', 'users.name AS user_Name', 'users.email')
+                            .where('tests_complited.user_id', req.params.uid)
+                            .then((result) => {
+                                console.log(result)
+                                res.render("pages/userPage", { user, test, result });
+                            })
+                    })
+            })
     },
 }
