@@ -155,3 +155,40 @@ button:focus {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.app {
+  width: 100%;
+}
+
+.status-complete {
+  background: green;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.status-notstarted {
+  background: grey;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.status-started {
+  background: orange;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dash-item {
+  width: 98%;
+  margin: 12px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.purple-btn {
+  background-color: #42548E;
+  margin: 10px;
+  color: white;
+}

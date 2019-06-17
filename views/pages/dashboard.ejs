@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <% include ../partials/head %>
-    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
     <title>Skill Test</title>
   </head>
   
@@ -12,7 +12,8 @@
     <div class="dash-main">
       <% include ../partials/sidebar %>
         <div class="app">
-          Dashboard
+          <% include ../partials/dashboardUsers %>
+          <% include ../partials/tests %>
         </div>
     </div>
     <% include ../partials/bs %>
