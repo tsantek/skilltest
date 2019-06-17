@@ -1,14 +1,18 @@
 const knex = require("../db/knex.js");
 
 module.exports = {
-    // CHANGE ME TO AN ACTUAL FUNCTION
+    // HOME PAGE
     index: (req, res) => {
         res.render("pages/landing");
     },
-    // loginPage: (req, res) => {
-    //     // MISSING REDIRECT ROUTE 
-    //     res.render("pages/login");
-    // },
+    // LOGIN PAGE 
+    loginPage: (req, res) => {
+        res.render("pages/login");
+    },
+    //  SIGNUP 
+    registerPage: (req, res) => {
+        res.render("pages/register");
+    },
     // registerRecruiters: (req, res) => {
     //     knex('recruiters')
     //         .insert(req.body)

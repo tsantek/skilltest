@@ -3,11 +3,10 @@ const template = require("../controllers/template.js")
 module.exports = function(app) {
 
     app.get('/', template.index);
+    app.get('/login', template.loginPage);
+    app.get('/register', template.registerPage);
+
     app.use(authMiddleware);
-
-
-
-
 
 
     function authMiddleware(req, res, next) {
