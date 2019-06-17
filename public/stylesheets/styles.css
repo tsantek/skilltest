@@ -1,5 +1,9 @@
 .nav-item-right {
-  padding: 0 8px 0 0;
+  padding: 0 5px 0 0;
+}
+
+.navbar {
+  height: 8vh;
 }
 
 html, body {
@@ -9,7 +13,7 @@ html, body {
 .main {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 92vh;
   flex-direction: column;
   align-items: center;
   background: linear-gradient(to bottom, #fff 0%, #f7ecff 46%, #d2ecff 74%, #fff 100%);
@@ -21,8 +25,9 @@ html, body {
   align-items: center;
 }
 
+
 #loginform input, #regform input {
-  width: 90%;
+  width: 98%;
   margin: 5px;
   padding: 15px;
   border: none;
@@ -62,3 +67,90 @@ html, body {
   transition-duration: 1s;
   background-color: rgb(130, 130, 130);
 }
+<<<<<<< HEAD
+=======
+
+/* Dashboard Styles */
+.dash-main {
+  display: flex;
+  height: 92vh;
+}
+
+
+
+.sidenav-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Sidebar Styles */
+
+.sidenav-wrapper {
+  height: 100%;
+  width: 200px;
+  background-color: rgb(37, 46, 79);
+  padding-top: 10px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav-wrapper a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition-duration: .25s;
+}
+
+.sidenav-wrapper a:hover {
+  background-color: #6B668C;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav-wrapper a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: rgb(43, 56, 101);
+  color: white;
+  outline: none;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: rgb(43, 56, 101);
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+.fa-plus {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+>>>>>>> 0a90696dc4230dc3492f7f707ab8eaa4ac599b1a
