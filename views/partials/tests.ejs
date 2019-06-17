@@ -12,27 +12,15 @@
           </tr>
         </thead>
         <tbody>
+         <% for(let i =0; i < test.length; i++){%>
           <tr>
-            <th scope="row">Javascript</th>
-            <td>10</td>
-            <td>6/17/2019</td>
-            <td>fj8249jwfa</td>
-            <td><a>http://localhost/testid</a></td>
+            <th scope="row"><%=test[i].name%></th>
+            <td><%=test[i].total%></td>
+            <td><%=test[i].created_at%></td>
+            <td><%=test[i].code%></td>
+            <td><a>http://localhost/</a></td>
           </tr>
-          <tr>
-            <th scope="row">Javascript</th>
-            <td>10</td>
-            <td>6/17/2019</td>
-            <td>fj8249jwfa</td>
-            <td><a>http://localhost/testid</a></td>
-          </tr>
-          <tr>
-            <th scope="row">Javascript</th>
-            <td>10</td>
-            <td>6/17/2019</td>
-            <td>fj8249jwfa</td>
-            <td><a>http://localhost/testid</a></td>
-          </tr>
+        <% } %>
         </tbody>
       </table>
   </div>
