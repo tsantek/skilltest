@@ -68,8 +68,6 @@ html, body {
   transition-duration: 1s;
   background-color: rgb(130, 130, 130);
 }
-<<<<<<< HEAD
-=======
 
 /* Dashboard Styles */
 .dash-main {
@@ -157,4 +155,3 @@ button:focus {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
->>>>>>> 0a90696dc4230dc3492f7f707ab8eaa4ac599b1a
