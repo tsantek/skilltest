@@ -3,7 +3,11 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary();
         table.string('name');
         table.string('email').unique();
-        table.text('password');
+        table.string('code');
+        table.integer('recruiters_id')
+            .references('id')
+            .inTable('recruiters')
+            .onDelete('CASCADE');
         table.timestamps(true, true);
     })
 };

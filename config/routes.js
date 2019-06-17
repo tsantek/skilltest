@@ -5,13 +5,14 @@ module.exports = function(app) {
     app.get('/', template.index);
     app.get('/login', template.loginPage);
     app.get('/register', template.registerPage);
+    app.get('/logout', template.logout);
 
 
     app.post('/registerRecruiters', template.registerRecruiters);
     app.post('/loginRecruiters', template.loginRecruiters);
 
     app.use(authMiddleware);
-    app.get('/dashboard', template.dashboard);
+    app.get('/dashboard/:id', template.dashboard);
 
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {

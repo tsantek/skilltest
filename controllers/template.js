@@ -9,14 +9,23 @@ module.exports = {
     loginPage: (req, res) => {
         res.render("pages/login");
     },
-    //  SIGNUP 
+    //  SIGNUP  GET
     registerPage: (req, res) => {
         res.render("pages/register");
     },
+    // DASHBOARD GET
     dashboard: (req, res) => {
-        // MISSING REDIRECT ROUTE 
-        res.render("pages/dashboard");
+        knex('users')
+            .where('recruiters_id', req.params.id)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.id)
+                    .then((test) => {
+                        res.render("pages/dashboard", { user, test });
+                    })
+            })
     },
+    // REGISTER POST
     registerRecruiters: (req, res) => {
         knex('recruiters')
             .insert(req.body)
@@ -24,10 +33,11 @@ module.exports = {
             .then((user) => {
                 req.session.user_id = user[0].id;
                 req.session.save(() => {
-                    res.redirect(`/dashboard`);
+                    res.redirect(`/dashboard/${user[0].id}`);
                 })
             })
     },
+    // LOGIN POST 
     loginRecruiters: (req, res) => {
         knex('recruiters')
             .where('email', req.body.email).then((results) => {
@@ -39,11 +49,19 @@ module.exports = {
                 if (user.password === req.body.password) {
                     req.session.user_id = user.id;
                     req.session.save(() => {
-                        res.redirect(`/dashboard`);
+                        res.redirect(`/dashboard/${user.id}`);
                     })
                 } else {
                     res.redirect("/login");
                 }
             })
+    },
+    logout: (req, res) => {
+        req.session.destroy((err) => {
+            if (err) {
+                return console.log(err);
+            }
+            res.redirect('/');
+        });
     },
 }
