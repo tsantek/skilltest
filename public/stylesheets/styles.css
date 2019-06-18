@@ -206,8 +206,13 @@ button:focus {
 }
 
 
+
 .test-table {
   width: 100%;
+}
+.test-table h2 {
+  text-align: center;
+  margin: 50px;
 }
 .user-info {
   flex: 1;
