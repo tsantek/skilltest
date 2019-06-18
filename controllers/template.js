@@ -92,7 +92,6 @@ module.exports = {
                                     .where('users.id', req.params.uid)
                                     .then((result) => {
                                         if (result.length > 0) {
-                                            console.log(result)
                                             res.render("pages/userPage", { user, test, result, recruiter});
                                         } else {
                                             knex('users')
