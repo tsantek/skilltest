@@ -108,8 +108,12 @@ module.exports = {
                         knex('recruiters')
                             .where('id', req.params.rid)
                             .then((recruiter) => {
-                                res.render("pages/testPage", { user, test, recruiter });
-
+                                knex('tests')
+                                    .where('recruiters_id', req.params.rid)
+                                    .where('id', req.params.tid)
+                                    .then(testItem => {
+                                        res.render("pages/testPage", { user, test, recruiter, testItem });
+                                    })
                             })
                     })
             })
