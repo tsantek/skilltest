@@ -1,10 +1,16 @@
 const knex = require("../db/knex.js");
 var q = {
-  i: 1
+  'i': 1,
+  'id': 0
 };
 
 module.exports = {
   create: (req, res) => {
+    knex('users').insert({
+      name: 'Your name here'
+    }).returning('id').then((id) => {
+      q.id = id;
+    }).then(() => {
           knex('users')
               .where('recruiters_id', req.params.id)
               .then((user) => {
@@ -21,23 +27,21 @@ module.exports = {
                                       .where('tests_completed.recruiters_id', req.params.id)
                                       .then((result) => {
                                           console.log(recruiter)
-                                          res.render("pages/dashboardcreate", { user, test, result, recruiter});
+                                          console.log(q.id)
+                                          res.render("pages/dashboardcreate", { user, test, result, recruiter, q});
                                       })
                               })
                       })
+              })
               })
       },
 
   question: (req, res) => {
       knex('tests').insert({
         name: req.body.testName,
-        // prompt: req.body.Prompt,
         total: req.body.questions,
         recruiters_id: req.params.id,
         code: req.body.code
-      }).then(() =>
-      knex('tests').where('name', req.body.testName).then((result) => {
-        q.id = result.id;
       }).then(() => {
       knex('users')
           .where('recruiters_id', req.params.id)
@@ -64,7 +68,7 @@ module.exports = {
                           })
                   })
           })
-      }))
+      })
   },
 
   questionnext: (req, res) => {
@@ -74,7 +78,7 @@ module.exports = {
       false_question_one: req.body.icone,
       false_question_two: req.body.ictwo,
       recruiters_id: req.params.id,
-      test_id: 1
+      test_id: parseInt(q.id[0])
     }).then(() => {
       q.i ++
       if (q.total == 10) {
