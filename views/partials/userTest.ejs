@@ -4,14 +4,17 @@
     <h1><%=result[0].user_Name%></h1>
     <h3><%=result[0].email%></h3>
   </div>
-  <div class="user-chart">
-    <h5>Tests Completed %</h5>
-    <canvas id="test-chart">Your browser does not support the canvas feature.</canvas>
-  </div>
+  <% if (result[0].name) { %>
+    <div class="user-chart">
+      <h5>Tests Completed %</h5>
+      <canvas id="test-chart">Your browser does not support the canvas feature.</canvas>
+    </div>    
+  <% } %>
 </div>
 <div class="test-table">
-  <div class="dash-item">
-    <table class="table">
+  <% if (result[0].name) { %>
+    <div class="dash-item">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Test</th>
@@ -29,8 +32,10 @@
           <% } %>
         </tbody>
       </table>
-  </div>
-  </div>
+    </div>
+  <% } else { %>
+    <h2><%= result[0].user_Name%> has not completed any tests!</h2>
+  <% } %>
 </div>
 
 
