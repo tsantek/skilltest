@@ -97,4 +97,21 @@ module.exports = {
                     })
             })
     },
+    // TEST INFO GET
+    testInfo: (req, res) => {
+        knex('users')
+            .where('recruiters_id', req.params.rid)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.rid)
+                    .then((test) => {
+                        knex('recruiters')
+                            .where('id', req.params.rid)
+                            .then((recruiter) => {
+                                res.render("pages/testPage", { user, test, recruiter });
+
+                            })
+                    })
+            })
+    }
 }
