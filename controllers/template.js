@@ -85,13 +85,25 @@ module.exports = {
                         knex('recruiters')
                             .where('id', req.params.rid)
                             .then((recruiter) => {
-                                knex(`tests_completed`)
-                                    .join('users', 'tests_completed.test_id', 'users.id')
+                                knex(`users`)
+                                    .join('tests_completed', 'tests_completed.user_id', 'users.id')
                                     .join('tests', 'tests_completed.test_id', 'tests.id')
                                     .select('tests.name', 'tests_completed.total', 'tests_completed.correct', 'users.name AS user_Name', 'users.email')
-                                    .where('tests_completed.user_id', req.params.uid)
+                                    .where('users.id', req.params.uid)
                                     .then((result) => {
-                                        res.render("pages/userPage", { user, test, result, recruiter });
+                                        if (result.length > 0) {
+                                            console.log(result)
+                                            res.render("pages/userPage", { user, test, result, recruiter});
+                                        } else {
+                                            knex('users')
+                                                .where('id', req.params.uid)
+                                                .select('users.name AS user_Name', 'users.email')
+                                                .then(userResult => {
+                                                    result = userResult
+                                                    res.render("pages/userPage", { user, test, result, recruiter});
+                                                })
+                                        }
+                                        
                                     })
                             })
                     })
