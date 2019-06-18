@@ -17,7 +17,7 @@ module.exports = function(app) {
     app.get('/dashboard/create/:id', test.create);
     app.post('/create/question/:id', test.question);
     app.post('/create/questionnext/:id', test.questionnext);
-
+    app.get('/dashboard/:rid/user/:uid', template.userDashboard);
 
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {
