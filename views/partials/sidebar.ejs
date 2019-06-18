@@ -1,13 +1,13 @@
 <div class="sidenav-wrapper">
   <div class="sidenav-start">
     <div class="sidenav">
-      <a href="#contact">Home</a>
+      <a href="/dashboard/<%=recruiter[0].id%>">Home</a>
       <button class="dropdown-btn">Users
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-container">
         <% for(let i = 0; i < user.length; i++) { %>
-          <a href="#"> <%=user[i].name%></a>
+          <a href="/dashboard/<%=user[i].recruiters_id%>/user/<%=user[i].id%>"> <%=user[i].name%></a>
         <% }%>
       </div>
       <button class="dropdown-btn">Tests

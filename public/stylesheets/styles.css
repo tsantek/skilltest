@@ -73,9 +73,17 @@ html, body {
 .dash-main {
   display: flex;
   height: 92vh;
+  background: linear-gradient(to bottom, #fff 0%, #f7ecff 46%, #d2ecff 74%, #fff 100%);
 }
 
+table {
+  background-color: white;
+  transition-duration: .5s;
+}
 
+table:hover {
+  opacity: 1;
+}
 
 .sidenav-wrapper {
   display: flex;
