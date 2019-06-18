@@ -1,5 +1,6 @@
 <div class="dash-item">
   <table class="table">
+ 
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -21,4 +22,7 @@
         <% } %>
       </tbody>
     </table>
+             <%if (result.length == 0) { %>
+       You don't have any Users!
+        <% } %>
 </div>

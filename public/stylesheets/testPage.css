@@ -70,3 +70,13 @@
     text-align: center;
     padding-top: 40px;
 }
+
+.btn-submit-question {
+    float: right;
+    margin-bottom: 20px;
+}
+
+.btn-question-edit-delete {
+    float: right;
+    margin-bottom: 20px;
+}

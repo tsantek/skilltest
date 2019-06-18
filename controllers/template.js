@@ -115,7 +115,6 @@ module.exports = {
                                         knex('questions')
                                             .where('test_id', req.params.tid)
                                             .then(questions => {
-                                                console.log(questions)
                                                 res.render("pages/testPage", { user, test, recruiter, testItem, questions });
                                             })
                                     })
