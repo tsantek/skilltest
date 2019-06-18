@@ -1,5 +1,13 @@
 .nav-item-right {
-    padding: 0 5px 0 0;
+    padding: 0 15px 0 0;
+}
+
+.navbar a {
+    color: black;
+}
+
+.dropdown-menu {
+    left: -90px;
 }
 
 .landing-jumbotron {
