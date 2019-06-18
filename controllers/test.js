@@ -26,34 +26,36 @@ module.exports = {
       },
 
   question: (req, res) => {
-      var q = {
-        i: 1
-      }
-      knex('users')
-          .where('recruiters_id', req.params.id)
-          .then((user) => {
-              knex('tests')
-                  .where('recruiters_id', req.params.id)
-                  .then((test) => {
-                      res.render("pages/dashboardcreatequestion", { user, test, q });
-                  })
-          })
-  },
-
-  questionnext: (req, res) => {
-      q++
-      if (q <= 11) {
-        res.redirect('pages/dashboard')
-      } else {
-      knex('users')
-          .where('recruiters_id', req.params.id)
-          .then((user) => {
-              knex('tests')
-                  .where('recruiters_id', req.params.id)
-                  .then((test) => {
-                      res.render("pages/dashboardcreatequestion", { user, test, q });
-                  })
-          })
+    knex('questions').insert({
+        question: req.body.question,
+        correct: req.body.correct,
+        false_question_one: req.body.false_question_one,
+        false_question_two: req.body.false_question_two,
+        recruiters_id: req.params.rid,
+        test_id: req.params.tid
+      }).then(() => {
+          knex('users')
+              .where('recruiters_id', req.params.rid)
+              .then((user) => {
+                  knex('tests')
+                      .where('recruiters_id', req.params.rid)
+                      .then((test) => {
+                          knex('recruiters')
+                              .where('id', req.params.rid)
+                              .then((recruiter) => {
+                                  knex('tests')
+                                      .where('recruiters_id', req.params.rid)
+                                      .where('id', req.params.tid)
+                                      .then(testItem => {
+                                          knex('questions')
+                                              .where('test_id', req.params.tid)
+                                              .then(questions => {
+                                                  res.render("pages/testPage", { user, test, recruiter, testItem, questions });
+                                              })
+                                      })
+                              })
+                      })
+              })
+      })
+    }
   }
-},
-}
