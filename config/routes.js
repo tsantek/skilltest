@@ -11,13 +11,12 @@ module.exports = function(app) {
 
     app.post('/registerRecruiters', template.registerRecruiters);
     app.post('/loginRecruiters', template.loginRecruiters);
-    
+
 
     app.use(authMiddleware);
     app.get('/dashboard/:id', template.dashboard);
     app.get('/dashboard/create/:id', test.create);
-    app.post('/create/question/:id', test.question);
-    app.post('/create/questionnext/:id', test.questionnext);
+    app.post('/:rid/add/:tid', test.question);
     app.get('/dashboard/:rid/user/:uid', template.userDashboard);
 
     app.get('/dashboard/:rid/test/:tid', template.testInfo);

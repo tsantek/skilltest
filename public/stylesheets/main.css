@@ -1,12 +1,13 @@
 .nav-item-right {
-    padding: 0 5px 0 0;
-    color: #42548E;
+    padding: 0 15px 0 0;
 }
 
-.logo {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.8em;
-    color: #42548E;
+.navbar a {
+    color: black;
+}
+
+.dropdown-menu {
+    left: -90px;
 }
 
 .landing-jumbotron {
