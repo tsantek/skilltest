@@ -24,11 +24,11 @@ module.exports = {
                         knex('recruiters')
                             .where('id', req.params.id)
                             .then((recruiter) => {
-                                knex(`tests_complited`)
-                                    .join('users', 'tests_complited.test_id', 'users.id')
-                                    .join('tests', 'tests_complited.test_id', 'tests.id')
-                                    .select('tests.name', 'tests_complited.total', 'tests_complited.correct', 'users.name AS user_Name', 'users.email')
-                                    .where('tests_complited.recruiters_id', req.params.id)
+                                knex(`tests_completed`)
+                                    .join('users', 'tests_completed.test_id', 'users.id')
+                                    .join('tests', 'tests_completed.test_id', 'tests.id')
+                                    .select('tests.name', 'tests_completed.total', 'tests_completed.correct', 'users.name AS user_Name', 'users.email')
+                                    .where('tests_completed.recruiters_id', req.params.id)
                                     .then((result) => {
                                         res.render("pages/dashboard", { user, test, result, recruiter });
                                     })
@@ -85,11 +85,11 @@ module.exports = {
                         knex('recruiters')
                             .where('id', req.params.rid)
                             .then((recruiter) => {
-                                knex(`tests_complited`)
-                                    .join('users', 'tests_complited.test_id', 'users.id')
-                                    .join('tests', 'tests_complited.test_id', 'tests.id')
-                                    .select('tests.name', 'tests_complited.total', 'tests_complited.correct', 'users.name AS user_Name', 'users.email')
-                                    .where('tests_complited.user_id', req.params.uid)
+                                knex(`tests_completed`)
+                                    .join('users', 'tests_completed.test_id', 'users.id')
+                                    .join('tests', 'tests_completed.test_id', 'tests.id')
+                                    .select('tests.name', 'tests_completed.total', 'tests_completed.correct', 'users.name AS user_Name', 'users.email')
+                                    .where('tests_completed.user_id', req.params.uid)
                                     .then((result) => {
                                         res.render("pages/userPage", { user, test, result, recruiter });
                                     })
