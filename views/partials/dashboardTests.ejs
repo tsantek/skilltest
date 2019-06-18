@@ -1,0 +1,123 @@
+<div class="dash-item">
+    <h4> <strong><%= testItem[0].name %></strong></h4>
+    <div class="row">
+        <div class="col-4">
+            <h5>Number of Questions:</h5>
+            <div class="total-number">
+                <%=testItem[0].total %>
+            </div>
+        </div>
+        <div class="col-4 code-containter">
+            <h5>Test Code:</h5>
+            <div id=clone class="code-container">
+                <p id="p1">
+                    <%=testItem[0].code %>
+                </p>
+            </div>
+            <a class="clone-btn" onclick="copyToClipboard('#p1')"><i class="far fa-clone"></i></a>
+        </div>
+
+
+
+        <div class="col-4 time-updated-created-container">
+            <h5>Created:</h5>
+            <p><strong>Time: <%=testItem[0].created_at.getHours()%>:<%=testItem[0].created_at.getMinutes()%></strong></p>
+            <p><strong> Date: <%=testItem[0].created_at.getDate()%>/<%= testItem[0].created_at.getMonth()%>/<%= testItem[0].created_at.getFullYear()%>
+          </strong></p>
+
+        </div>
+    </div>
+
+    <div class="questions-div">
+        <h5>Test Questions:</h5>
+
+        <%if (questions.length == 0) { %>
+            You don't have any questions!
+            <% } %>
+                <div class="accordion" id="accordionExample">
+
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseQ" aria-expanded="true" aria-controls="collapseOne">
+                       Add a New Question
+                      </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseQ%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+
+                                <form>
+                                    <div class="form-group">
+                                        <label for="question">Question</label>
+                                        <textarea type="text" class="form-control" id="question" name="question">
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correct">Correct</label>
+                                        <input type="text" class="form-control" id="correct" aria-describedby="emailHelp" name="correct" placeholder="Enter Correct Answer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="false_question_one">Incorrect #1</label>
+                                        <input type="text" class="form-control" id="false_question_one" aria-describedby="emailHelp" name="false_question_one" placeholder="Enter Incorrect Answer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="false_question_two">Incorrect #2</label>
+                                        <input type="text" class="form-control" id="false_question_two" aria-describedby="emailHelp" name="false_question_two" placeholder="Enter Incorrect Answer">
+                                    </div>
+                                    <input class="btn btn-success btn-submit-question" type="submit" class="btn btn-primary">
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <% for (let i = 0; i < questions.length; i++){ %>
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%=questions[i].id %>" aria-expanded="true" aria-controls="collapseOne">
+                           <%=questions[i].question %>
+                      </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapse<%=questions[i].id %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p><strong>Answers:</strong></p>
+                                    <p>Correct:
+                                        <%=questions[i].correct %>
+                                    </p>
+                                    <hr>
+                                    <p>Incorrect I:
+                                        <%=questions[i].false_question_one %>
+                                    </p>
+                                    <hr>
+                                    <p>Incorrect II:
+                                        <%=questions[i].false_question_two %>
+                                    </p>
+                                    <div class="btn-question-edit-delete">
+                                        <button class="btn btn-success" href="#">Edit</button>
+                                        <button class="btn btn-danger" href="#">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%} %>
+                </div>
+    </div>
+    <div class="btn-delete-container">
+        <button class="btn btn-danger">DELETE TEST</button>
+    </div>
+</div>
+<script>
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+</script>
