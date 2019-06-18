@@ -20,6 +20,8 @@ module.exports = function(app) {
     app.post('/create/questionnext/:id', test.questionnext);
     app.get('/dashboard/:rid/user/:uid', template.userDashboard);
 
+    app.get('/dashboard/:rid/test/:tid', template.testInfo);
+
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {
             res.redirect("/login");
