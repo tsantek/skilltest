@@ -1,5 +1,4 @@
 <div class="dash-item">
-  
     <table class="table">
         <button type="button" class="btn purple-btn">Create Test</button>
         <thead>
@@ -23,5 +22,8 @@
         <% } %>
         </tbody>
       </table>
+             <%if (result.length == 0) { %>
+      <p>You don't have any Tests!</p>
+        <% } %>
   </div>
   

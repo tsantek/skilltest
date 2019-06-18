@@ -97,4 +97,29 @@ module.exports = {
                     })
             })
     },
+    // TEST INFO GET
+    testInfo: (req, res) => {
+        knex('users')
+            .where('recruiters_id', req.params.rid)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.rid)
+                    .then((test) => {
+                        knex('recruiters')
+                            .where('id', req.params.rid)
+                            .then((recruiter) => {
+                                knex('tests')
+                                    .where('recruiters_id', req.params.rid)
+                                    .where('id', req.params.tid)
+                                    .then(testItem => {
+                                        knex('questions')
+                                            .where('test_id', req.params.tid)
+                                            .then(questions => {
+                                                res.render("pages/testPage", { user, test, recruiter, testItem, questions });
+                                            })
+                                    })
+                            })
+                    })
+            })
+    }
 }
