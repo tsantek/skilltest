@@ -30,7 +30,6 @@ module.exports = {
                                     .select('tests.name', 'tests_complited.total', 'tests_complited.correct', 'users.name AS user_Name', 'users.email')
                                     .where('tests_complited.recruiters_id', req.params.id)
                                     .then((result) => {
-                                        console.log(recruiter)
                                         res.render("pages/dashboard", { user, test, result, recruiter });
                                     })
                             })
@@ -92,7 +91,6 @@ module.exports = {
                                     .select('tests.name', 'tests_complited.total', 'tests_complited.correct', 'users.name AS user_Name', 'users.email')
                                     .where('tests_complited.user_id', req.params.uid)
                                     .then((result) => {
-                                        console.log(recruiter)
                                         res.render("pages/userPage", { user, test, result, recruiter });
                                     })
                             })
