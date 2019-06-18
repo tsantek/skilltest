@@ -6,6 +6,12 @@
     color: black;
 }
 
+.logo {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.8em;
+    color: #42548E;
+  }
+
 .dropdown-menu {
     left: -90px;
 }
