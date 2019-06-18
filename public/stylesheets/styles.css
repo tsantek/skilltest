@@ -1,10 +1,16 @@
 .nav-item-right {
   padding: 0 15px 0 0;
 }
-
+.logo {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.8em;
+  color: #42548E;
+}
 .navbar {
   height: 8vh;
 }
+
+
 
 html, body {
   height: 100%;
