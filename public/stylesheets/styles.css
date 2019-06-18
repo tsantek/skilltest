@@ -1,7 +1,6 @@
 .nav-item-right {
-  padding: 0 5px 0 0;
+  padding: 0 15px 0 0;
 }
-.nav-item
 
 .navbar {
   height: 8vh;
@@ -74,6 +73,10 @@ html, body {
   display: flex;
   height: 92vh;
   background: linear-gradient(to bottom, #fff 0%, #f7ecff 46%, #d2ecff 74%, #fff 100%);
+}
+
+.dash-main h1 {
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
 }
 
 table {
@@ -158,11 +161,7 @@ button:focus {
   padding-right: 8px;
 }
 
-/* Some media queries for responsiveness */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+
 
 .app {
   width: 100%;
@@ -199,4 +198,35 @@ button:focus {
   background-color: #42548E;
   margin: 10px;
   color: white;
+}
+
+.user-heading {
+  padding: 10px;
+  display: flex;
+}
+
+
+.test-table {
+  width: 100%;
+}
+.user-info {
+  flex: 1;
+}
+.user-chart {
+  text-align: center;
+}
+#test-chart {
+  width: 400px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+@media screen and (max-height: 760px) {
+  .test-table {
+    width: 100%;
+  }
 }
