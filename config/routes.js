@@ -25,8 +25,11 @@ module.exports = function(app) {
 
     app.get('/dashboard/:rid/test/:tid', template.testInfo);
 
+    app.get('/dashboard/profile/helpPage/:rid', template.helpPage);
+
     app.get('/dashboard/profile/:rid', template.profileEdit);
     app.post('/editprofile/:rid', template.updateProfile);
+
 
 
     function authMiddleware(req, res, next) {
