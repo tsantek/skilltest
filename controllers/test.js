@@ -86,5 +86,11 @@ module.exports = {
       }).then(() => {
         res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
       })
+    },
+
+    deleteQ: (req,res) => {
+      knex('questions').where('id', req.params.qid).del().then(() => {
+        res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
+      })
     }
   }
