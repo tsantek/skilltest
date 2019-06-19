@@ -15,10 +15,11 @@
       </button>
       <div class="dropdown-container">
            <% for(let i = 0; i < test.length; i++) { %>
-          <a href="/dashboard/<%=user[i].recruiters_id%>/test/<%=test[i].id%>"> <%=test[i].name%></a>
+
+          <a href="/dashboard/<%=test[i].recruiters_id%>/test/<%=test[i].id%>"> <%=test[i].name%></a>
         <% }%>
       </div>
-      <a href="/dashboard/create/<%=recruiter.id%>">Create Test
+      <a href="/dashboard/create/<%=recruiter[0].id%>">Create Test
         <i class="fa fa-plus"></i>
       </a>
     </div>
