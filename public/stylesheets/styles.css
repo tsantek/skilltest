@@ -93,6 +93,12 @@ body {
     background-color: rgb(130, 130, 130);
 }
 
+.user-notes {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* Dashboard Styles */
 
