@@ -1,19 +1,31 @@
 <% if (result[0].name) { %>
   <div class="user-chart">
-    <h5>Tests Completed %</h5>
+    <h5>Latest Test Result</h5>
     <canvas id="test-chart">Your browser does not support the canvas feature.</canvas>
   </div>  
 <% } %>
 
 <script type="text/javascript">
-
   var canvas = document.getElementById("test-chart");
   var ctx = canvas.getContext("2d");
   var result = <%- JSON.stringify(result); %>;
-  var labels = result.map(test => { return test.name });
-  var correct = result.map(test => {return ((test.correct / test.total) * 100)});
-  console.log(Object.values(correct))
-  console.log(result[0].correct)
+  let testObj = {};
+
+  result.forEach(test => {
+    if (testObj[test.name]) {
+      if (testObj[test.name].created_at < test.created_at) {
+        testObj[test.name] = test;
+      } 
+    } else {
+      testObj[test.name] = test;
+    }
+  })
+  var labels = Object.keys(testObj)
+  var correct = Object.keys(testObj).map(test => {
+    return (
+      (testObj[test].correct / testObj[test].total) * 100
+    )
+  })
 
   var myChart = new Chart(ctx, {
       type: 'radar',
@@ -36,7 +48,7 @@
             stepSize: 50
           },
           pointLabels: {
-            fontSize: 15
+            fontSize: 18
           }
         },
         legend: {
