@@ -6,6 +6,9 @@
     height: 8vh;
 }
 
+.row {
+    margin: 0;
+}
 .navbar a {
     color: black;
 }
@@ -215,7 +218,8 @@ button:focus {
 }
 
 .status-complete {
-    background: green;
+    background: rgb(73, 140, 73);
+    color: white;
     padding: 5px;
     border-radius: 5px;
     text-align: center;
