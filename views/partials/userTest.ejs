@@ -38,8 +38,17 @@
     <% } else { %>
       <h2><%= result[0].user_Name%> has not completed any tests!</h2>
     <% } %>
-    <div class="user-notes">
-        <%= result[0].user_Name%> notes:
+    <div class="dash-item">
+      <div class="user-notes">
+        <h5 class="notes">Notes about <%= result[0].user_Name%>:</h5>
+        <% for (let i = 0; i < result[0].notes.length; i++) { %>
+          <p><%=result[0].notes[i]%></p>
+        <% } %>
+        <form action="/notes/<%=recruiter[0].id%>/addnote/<%=result[0].user_id%>" method="post" id="notes">
+          <textarea rows="4" cols="50" name="note" form="notes"></textarea>
+          <input class="btn btn-primary" type="submit" style="display:block;">
+        </form>
+      </div>
     </div>
   </div>
 </div>
