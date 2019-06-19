@@ -29,7 +29,8 @@ module.exports = {
       knex('users').insert({
           name: req.body.name,
           email: req.body.email,
-          recruiters_id: req.params.id
+          recruiters_id: req.params.id,
+          notes: []
         }).returning('*').then((result) => {
           var tid = parseInt(result[0].id);
             knex('users')
@@ -56,17 +57,13 @@ module.exports = {
             })
     },
 
-  question: (req, res) => {
-    knex('questions').insert({
-        question: req.body.question,
-        correct: req.body.correct,
-        false_question_one: req.body.false_question_one,
-        false_question_two: req.body.false_question_two,
-        recruiters_id: req.params.rid,
-        test_id: req.params.tid
+  addNote: (req, res) => {
+    knex('users')
+      .where('id', req.params.uid)
+      .update({
+        notes: knex.raw('array_append(notes, ?)', [req.body.note])
       }).then(() => {
-        console.log(req.params)
-          res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
+        res.redirect(`/dashboard/${req.params.rid}/user/${req.params.uid}`)
       })
     }
   }

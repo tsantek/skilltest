@@ -89,15 +89,16 @@ module.exports = {
                                 knex(`users`)
                                     .join('tests_completed', 'tests_completed.user_id', 'users.id')
                                     .join('tests', 'tests_completed.test_id', 'tests.id')
-                                    .select('tests.name', 'tests_completed.total', 'tests_completed.correct', 'users.name AS user_Name', 'users.email')
+                                    .select('tests.name', 'tests_completed.total', 'tests_completed.correct', 'users.name AS user_Name', 'users.email', 'users.id AS user_id','users.notes')
                                     .where('users.id', req.params.uid)
                                     .then((result) => {
+                                        console.log(result)
                                         if (result.length > 0) {
                                             res.render("pages/userPage", { user, test, result, recruiter});
                                         } else {
                                             knex('users')
                                                 .where('id', req.params.uid)
-                                                .select('users.name AS user_Name', 'users.email')
+                                                .select('users.name AS user_Name', 'users.email', 'users.notes', 'users.id AS user_id')
                                                 .then(userResult => {
                                                     result = userResult
                                                     res.render("pages/userPage", { user, test, result, recruiter});
