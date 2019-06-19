@@ -250,6 +250,12 @@ button:focus {
     color: white;
 }
 
+.btn-primary {
+    background-color: #4E3B77;
+    border: #4E3B77;
+    margin-top: 10px;
+}
+
 .user-heading {
     padding: 10px;
     display: flex;
