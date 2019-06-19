@@ -10,9 +10,8 @@
         <div class="nav-item-right nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span><%= recruiter[0].name%></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="#">Help</a>
+            <a class="dropdown-item" href="../../profile/<%= recruiter[0].id%>">Settings</a>
+            <a class="dropdown-item" href="/dashboard/profile/helpPage/<%= recruiter[0].id%>">Help</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/logout">Logout</a>
           </div>

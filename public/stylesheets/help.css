@@ -1,0 +1,23 @@
+.dash-item h4 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.dash-item p {
+    padding: 20px;
+}
+
+.small-title {
+    padding: 40px 0 0 20px;
+    font-weight: 500;
+}
+
+.dash-item h5 {
+    padding: 20px;
+}
+
+.small-title-two {
+    padding: 0px 0 0 20px;
+    font-weight: 500;
+}

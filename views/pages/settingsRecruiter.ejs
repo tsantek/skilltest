@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+        <link rel="stylesheet" href="/stylesheets/testPage.css">
+        <link rel="stylesheet" href="/stylesheets/profile.css">
+        <title>Skill Test/ Edit Profile</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="logo-link" href="/"><div class="logo"><strong>SKILL</strong>TEST</div></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto"></ul>
+      <div class="form-inline my-2 my-lg-0">
+        <div class="nav-item-right nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span><%= recruiter[0].name%></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/dashboard/profile/<%= recruiter[0].id%>">Settings</a>
+            <a class="dropdown-item" href="/dashboard/profile/helpPage/<%= recruiter[0].id%>">Help</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+        <div class="dash-main">
+            <% include ../partials/sidebar%>
+                <div class="app">
+                    <div class="main">
+                        <h4>Account Settings</h4>
+                        <div class="board user-form">
+                            <form method="post" action="/editprofile/<%=recruiter[0].id%>" id="regform" oninput='password.setCustomValidity(password.value != passwordConfirm.value ? "Passwords do not match." : "")'>
+                                <label for="name">Name:</label>
+                                <input id="name" type="text" name="name" placeholder="Name" value="<%= recruiter[0].name%>">
+                                <label for="name">Email:</label>
+                                <input id="email" type="email" name="email" placeholder="Email" value="<%= recruiter[0].email%>">
+                                <label for="password">New Password:</label>
+                                <input type="password" id="password" name="password" placeholder="Password">
+                                <label for="passwordConfirm">Confirm New Password:</label>
+                                <input type="password" id="passwordConfirm" placeholder="Confirm Password">
+                                <input class="btn" type="submit">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <% include ../partials/bs %>
+</body>
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</html>

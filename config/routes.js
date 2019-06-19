@@ -18,6 +18,9 @@ module.exports = function(app) {
     app.get('/dashboard/:id', template.dashboard);
     app.get('/dashboard/create/:id', test.create);
     app.post('/dashboard/create/:id', test.make);
+    app.get('/dashboard/delete/:rid/:tid', test.delete);
+    app.post('/dashboard/:rid/delete/:tid/:qid', test.editQ)
+    app.get('/dashboard/:rid/delete/:tid/:qid', test.deleteQ)
     app.post('/:rid/add/:tid', test.question);
     app.get('/dashboard/:rid/user/:uid', template.userDashboard);
     app.get('/dashboard/:id/adduser', user.addUser);
@@ -25,6 +28,13 @@ module.exports = function(app) {
     app.post('/notes/:rid/addnote/:uid', user.addNote);
 
     app.get('/dashboard/:rid/test/:tid', template.testInfo);
+
+    app.get('/dashboard/profile/helpPage/:rid', template.helpPage);
+
+    app.get('/dashboard/profile/:rid', template.profileEdit);
+    app.post('/editprofile/:rid', template.updateProfile);
+
+
 
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {

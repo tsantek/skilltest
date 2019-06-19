@@ -69,5 +69,28 @@ module.exports = {
         console.log(req.params)
           res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
       })
+    },
+
+    delete: (req,res) => {
+      knex('tests').where('id', req.params.tid).del().then(() => {
+        res.redirect(`/dashboard/${req.params.rid}`);
+      })
+    },
+
+    editQ: (req,res) => {
+      knex('questions').where('id', req.params.qid).update({
+        question: req.body.question,
+        correct: req.body.correct,
+        false_question_one: req.body.false_question_one,
+        false_question_two: req.body.false_question_two
+      }).then(() => {
+        res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
+      })
+    },
+
+    deleteQ: (req,res) => {
+      knex('questions').where('id', req.params.qid).del().then(() => {
+        res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
+      })
     }
   }
