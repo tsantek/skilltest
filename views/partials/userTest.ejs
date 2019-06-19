@@ -1,51 +1,118 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+
+<style>
+    .container-card {
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+        height: 100%;
+        margin: 15px;
+    }
+    .add-test-to-user{
+      font-size: 20px;
+    }
+</style>
+
+
 <div class="dash-container">
-  <div class="user-heading">
-    <div class="user-info">
-      <h1><%=result[0].user_Name%></h1>
-      <h3><%=result[0].email%></h3>
-      <div id="myContent" contentEditable="true">This is an editable element. Click and type something!</div>
+    <div class="user-heading">
+        <div class="user-info">
+            <h1>
+                <%=result[0].user_Name%>
+            </h1>
+            <h3>
+                <%=result[0].email%>
+            </h3>
+            <div id="myContent" contentEditable="true">This is an editable element. Click and type something!</div>
+        </div>
+        <% include userGraph %>
     </div>
-    <% include userGraph %>
-  </div>
-  <div class="test-table">
-    <% if (result[0].name) { %>
-      <div class="dash-item">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Test</th>
-              <th scope="col">Result</th>
-              <th scope="col">Completed</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% for(let i = 0; i < result.length; i++){%>
-            <tr>
-              <th scope="row"><%=result[i].name%></th>
-              <td><%=result[i].correct%>/<%=result[i].total%></td>
-              <td style="width: 20%;"><div class="status-complete">Completed</div></td>
-            </tr>
-            <% } %>
-          </tbody>
-        </table>
-      </div>
-    <% } else { %>
-      <h2><%= result[0].user_Name%> has not completed any tests!</h2>
-    <% } %>
-    <div class="dash-item">
-      <div class="user-notes">
-        <h5 class="notes">Notes about <%= result[0].user_Name%>:</h5>
-        <% for (let i = 0; i < result[0].notes.length; i++) { %>
-          <p><%=result[0].notes[i]%></p>
-        <% } %>
-        <form action="/notes/<%=recruiter[0].id%>/addnote/<%=result[0].user_id%>" method="post" id="notes">
-          <textarea rows="4" cols="50" name="note" form="notes"></textarea>
-          <input class="btn btn-primary" type="submit" style="display:block;">
-        </form>
-      </div>
+    <div class="test-table">
+        <% if (result[0].name) { %>
+            <div class="dash-item">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Test</th>
+                            <th scope="col">Result</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Completed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < result.length; i++){%>
+                            <tr>
+                                <th scope="row" style="width: 20%;">
+                                    <%=result[i].name%>
+                                </th>
+                                <td scope="row"  style="width: 30%;">
+                                    <div class="progress">
+                                        <div id="progressBar<%=[i]%>" class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100">45%</div>
+                                    </div>
+                                            <script>
+                                            // Script for progressbar
+                                                let totalProgress<%-[i]%> = <%=result[i].correct%>/<%=result[i].total%>* 100
+                                                document.querySelector(`#progressBar<%-[i]%>`).innerHTML = totalProgress<%-[i]%> + '%';
+                                                document.querySelector(`#progressBar<%-[i]%>`).style=`width:  ${totalProgress<%-[i]%>}%`;
+                                            </script>
+                                </td>
+                                <td scope="row" style="width: 30%;">
+                                    <%=result[i].created_at.getMonth()%>/
+                                        <%=result[i].created_at.getDate()%>/
+                                            <%=result[i].created_at.getFullYear() %>
+                                </td>
+                                <td style="width: 20%;">
+                                    <div class="status-complete">Completed</div>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <% } else { %>
+                <h2>
+                    <%= result[0].user_Name%> has not completed any tests!</h2>
+                <% } %>
+
+
+                    <div class="notes-add-test-to-user-container row d-flex justify-content-between">
+                        <!-- NOTES -->
+                        <div class="container-card col-md-5">
+                            <div class="user-notes">
+                                <h5 class="notes">Notes about
+                                    <%= result[0].user_Name%>:</h5>
+                                <% for (let i = 0; i < result[0].notes.length; i++) { %>
+                                    <p>
+                                        <%=result[0].notes[i]%>
+                                    </p>
+                                    <% } %>
+                                        <form action="/notes/<%=recruiter[0].id%>/addnote/<%=result[0].user_id%>" method="post" id="notes">
+                                            <div class="form-group">
+                                            <textarea class="form-control"  rows="4" name="note" form="notes"></textarea>
+                                            </div>
+                                            <input class="btn btn-primary" type="submit" style="display:block;">
+                                        </form>
+                            </div>
+                        </div>
+
+                        <!-- ADD TEST TO USER -->
+
+                        <div class="container-card col-md-5">
+                            <div class="user-notes">
+                                <form method="POST" action="addtesttouser/<%=recruiter[0].id%>/<%=result[0].user_id%>">
+                                    <div class="form-group">
+                                        <label for="addTestToUser" class="add-test-to-user">Add Test to <%=result[0].user_Name%></label>
+                                        <select name="test_id" class="form-control" id="addTestToUser">
+                                          <% for(let i =0; i < test.length; i++){%>
+                                          <option value="<%=test[i].id %>"><%=test[i].name %></option>
+                                          <% } %>
+                                        </select>
+                                      </div>
+                                      <input style="float:right" class="btn btn-success" type="submit">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
     </div>
-  </div>
 </div>
-
-
