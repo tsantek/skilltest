@@ -1,6 +1,7 @@
 //Update the name of the controller below and rename the file.
 const template = require("../controllers/template.js")
 const test = require("../controllers/test.js")
+const user = require("../controllers/user.js")
 module.exports = function(app) {
 
     app.get('/', template.index);
@@ -19,6 +20,8 @@ module.exports = function(app) {
     app.post('/dashboard/create/:id', test.make);
     app.post('/:rid/add/:tid', test.question);
     app.get('/dashboard/:rid/user/:uid', template.userDashboard);
+    app.get('/dashboard/:id/adduser', user.addUser);
+    app.post('/dashboard/:id/adduser', user.createUser);
 
     app.get('/dashboard/:rid/test/:tid', template.testInfo);
 

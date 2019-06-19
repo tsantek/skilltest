@@ -1,41 +1,47 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
-<div class="user-heading">
-  <div class="user-info">
-    <h1><%=result[0].user_Name%></h1>
-    <h3><%=result[0].email%></h3>
-  </div>
-  <% if (result[0].name) { %>
-    <div class="user-chart">
-      <h5>Tests Completed %</h5>
-      <canvas id="test-chart">Your browser does not support the canvas feature.</canvas>
-    </div>    
-  <% } %>
-</div>
-<div class="test-table">
-  <% if (result[0].name) { %>
-    <div class="dash-item">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Test</th>
-            <th scope="col">Result</th>
-            <th scope="col">Completed</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% for(let i = 0; i < result.length; i++){%>
-          <tr>
-            <th scope="row"><%=result[i].name%></th>
-            <td><%=result[i].correct%>/<%=result[i].total%></td>
-            <td style="width: 20%;"><div class="status-complete">Completed</div></td>
-          </tr>
-          <% } %>
-        </tbody>
-      </table>
+<div class="dash-container">
+  <div class="user-heading">
+    <div class="user-info">
+      <h1><%=result[0].user_Name%></h1>
+      <h3><%=result[0].email%></h3>
+      <div id="myContent" contentEditable="true">This is an editable element. Click and type something!</div>
     </div>
-  <% } else { %>
-    <h2><%= result[0].user_Name%> has not completed any tests!</h2>
-  <% } %>
+    <% if (result[0].name) { %>
+      <div class="user-chart">
+        <h5>Tests Completed %</h5>
+        <canvas id="test-chart">Your browser does not support the canvas feature.</canvas>
+      </div>    
+    <% } %>
+  </div>
+  <div class="test-table">
+    <% if (result[0].name) { %>
+      <div class="dash-item">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Test</th>
+              <th scope="col">Result</th>
+              <th scope="col">Completed</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% for(let i = 0; i < result.length; i++){%>
+            <tr>
+              <th scope="row"><%=result[i].name%></th>
+              <td><%=result[i].correct%>/<%=result[i].total%></td>
+              <td style="width: 20%;"><div class="status-complete">Completed</div></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <h2><%= result[0].user_Name%> has not completed any tests!</h2>
+    <% } %>
+    <div class="user-notes">
+        <%= result[0].user_Name%> notes:
+    </div>
+  </div>
 </div>
 
 
