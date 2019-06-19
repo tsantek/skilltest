@@ -125,7 +125,16 @@ module.exports = {
 },
 
     next: (req,res) => {
-      knex('tests_completed').where
+      knex('tests_completed').where('user_id', req.params.uid)
+      .where('test_id', req.params.tid).then((results) => {
+        var attempt = 0;
+        for (var i = 0; i < results.length; i++) {
+          if (results[i].id > attempt) {
+            attempt = results[i].id;
+          }
+        };
+
+      })
       res.send(`${req.body.response}, ${req.params.tid}, ${req.params.qid}`);
     }
   }

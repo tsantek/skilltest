@@ -26,11 +26,15 @@ module.exports = function(app) {
     app.get('/dashboard/:rid/user/:uid', template.userDashboard);
     app.get('/dashboard/:id/adduser', user.addUser);
     app.post('/dashboard/:id/adduser', user.createUser);
+    app.post('/notes/:rid/addnote/:uid', user.addNote);
 
     app.get('/dashboard/:rid/test/:tid', template.testInfo);
 
+    app.get('/dashboard/profile/helpPage/:rid', template.helpPage);
+
     app.get('/dashboard/profile/:rid', template.profileEdit);
     app.post('/editprofile/:rid', template.updateProfile);
+
 
 
     function authMiddleware(req, res, next) {
