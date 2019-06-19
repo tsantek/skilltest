@@ -9,21 +9,16 @@
   </head>
   <body>
 
-    <form method='post' action='create/question/<%=user.recruiter_id%>'>
+    <form method='post' action='<%=recruiter[0].id%>'>
       <div class="form-group">
         <label for="testName">Test Name</label>
-        <input type="text" class="form-control" id="testName">
+        <input type="text" class="form-control" name='name' id="testName">
       </div>
       <div class="form-group">
         <label for="prompt">Prompt / Test Description</label>
-        <textarea class="form-control" id="prompt" rows="3"></textarea>
+        <textarea class="form-control" id="prompt" name='prompt' rows="3"></textarea>
       </div>
       <div class="form-group">
-      <label for="questions">Number of questions to ask</label>
-      <select class="form-control" id="questions">
-        <option>5</option>
-        <option>10</option>
-      </select>
     </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
