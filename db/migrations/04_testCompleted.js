@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
             .onDelete('CASCADE');
         table.integer('total');
         table.integer('correct');
+        table.boolean('completed');
         table.integer('recruiters_id')
             .references('id')
             .inTable('recruiters')
