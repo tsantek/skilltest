@@ -8,8 +8,9 @@ module.exports = function(app) {
     app.get('/login', template.loginPage);
     app.get('/register', template.registerPage);
     app.get('/logout', template.logout);
-
-
+    app.get('/taketest/:id', test.taketest);
+    app.post('/taketest/start/:tid', test.start);
+    app.post('/taketest/next/:tid/:uid/:qid', test.next);
     app.post('/registerRecruiters', template.registerRecruiters);
     app.post('/loginRecruiters', template.loginRecruiters);
 

@@ -92,5 +92,40 @@ module.exports = {
       knex('questions').where('id', req.params.qid).del().then(() => {
         res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
       })
+    },
+
+    taketest: (req,res) => {
+      knex('tests').where('code', req.params.id).then((result) => {
+        console.log(result);
+        res.render('pages/taketest', { result });
+      })
+    },
+
+    start: (req,res) => {
+      knex('users').where('email', req.body.email).then((user) => {
+        if(user.length < 1) {
+          res.send('We don\'t have this email address on file, please check with the recruiter who gave you this link')
+        } else {
+          console.log(user);
+        knex('tests_completed').insert({
+          test_id: req.params.tid,
+          user_id: user[0].id,
+          total: 0,
+          correct: 0,
+          recruiters_id: user[0].recruiters_id
+        }).then(() => {
+          knex('questions').where('test_id', req.params.tid).then((result) => {
+            var test = req.params.tid;
+            var question = result;
+            res.render('pages/start', {question, test, user});
+        })
+      })
+    }
+  })
+},
+
+    next: (req,res) => {
+      knex('tests_completed').where
+      res.send(`${req.body.response}, ${req.params.tid}, ${req.params.qid}`);
     }
   }
