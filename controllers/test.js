@@ -69,5 +69,11 @@ module.exports = {
         console.log(req.params)
           res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
       })
+    },
+
+    delete: (req,res) => {
+      knex('tests').where('id', req.params.tid).del().then(() => {
+        res.redirect(`/dashboard/${req.params.rid}`);
+      })
     }
   }

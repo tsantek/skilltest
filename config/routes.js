@@ -17,6 +17,7 @@ module.exports = function(app) {
     app.get('/dashboard/:id', template.dashboard);
     app.get('/dashboard/create/:id', test.create);
     app.post('/dashboard/create/:id', test.make);
+    app.get('/dashboard/delete/:rid/:tid', test.delete);
     app.post('/:rid/add/:tid', test.question);
     app.get('/dashboard/:rid/user/:uid', template.userDashboard);
 
