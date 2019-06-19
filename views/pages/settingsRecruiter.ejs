@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+        <link rel="stylesheet" href="/stylesheets/testPage.css">
+        <link rel="stylesheet" href="/stylesheets/profile.css">
+        <title>Skill Test/ Edit Profile</title>
+</head>
+
+<body>
+    <% include ../partials/navDashboardTestUserItem %>
+
+        <div class="dash-main">
+            <% include ../partials/sidebar%>
+                <div class="app">
+                    <div class="main">
+                        <h4>Account Settings</h4>
+                        <div class="board user-form">
+                            <form method="post" action="/editprofile/<%=recruiter[0].id%>" id="regform" oninput='password.setCustomValidity(password.value != passwordConfirm.value ? "Passwords do not match." : "")'>
+                                <label for="name">Name:</label>
+                                <input id="name" type="text" name="name" placeholder="Name" value="<%= recruiter[0].name%>">
+                                <label for="name">Email:</label>
+                                <input id="email" type="email" name="email" placeholder="Email" value="<%= recruiter[0].email%>">
+                                <label for="password">New Password:</label>
+                                <input type="password" id="password" name="password" placeholder="Password">
+                                <label for="passwordConfirm">Confirm New Password:</label>
+                                <input type="password" id="passwordConfirm" placeholder="Confirm Password">
+                                <input class="btn" type="submit">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <% include ../partials/bs %>
+</body>
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</html>

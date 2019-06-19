@@ -30,7 +30,7 @@ module.exports = {
                                     .select('tests.name', 'tests_completed.total', 'tests_completed.correct', 'users.name AS user_Name', 'users.email')
                                     .where('tests_completed.recruiters_id', req.params.id)
                                     .then((result) => {
-                                      console.log({ user, test, result, recruiter })
+                                        console.log({ user, test, result, recruiter })
                                         res.render("pages/dashboard", { user, test, result, recruiter });
                                     })
                             })
@@ -68,6 +68,7 @@ module.exports = {
                 }
             })
     },
+    // LOGOUT
     logout: (req, res) => {
         req.session.destroy((err) => {
             if (err) {
@@ -93,14 +94,14 @@ module.exports = {
                                     .where('users.id', req.params.uid)
                                     .then((result) => {
                                         if (result.length > 0) {
-                                            res.render("pages/userPage", { user, test, result, recruiter});
+                                            res.render("pages/userPage", { user, test, result, recruiter });
                                         } else {
                                             knex('users')
                                                 .where('id', req.params.uid)
                                                 .select('users.name AS user_Name', 'users.email')
                                                 .then(userResult => {
                                                     result = userResult
-                                                    res.render("pages/userPage", { user, test, result, recruiter});
+                                                    res.render("pages/userPage", { user, test, result, recruiter });
                                                 })
                                         }
 
@@ -132,6 +133,31 @@ module.exports = {
                                     })
                             })
                     })
+            })
+    },
+    // PROFILE EDIT RECRUITER
+    profileEdit: (req, res) => {
+        knex('users')
+            .where('recruiters_id', req.params.rid)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.rid)
+                    .then((test) => {
+                        knex('recruiters')
+                            .where('id', req.params.rid)
+                            .then((recruiter) => {
+                                res.render("pages/settingsRecruiter", { user, test, recruiter })
+                            })
+                    })
+            })
+    },
+    // EDIT PROFILE
+    updateProfile: (req, res) => {
+        knex('recruiters')
+            .where('id', req.params.rid)
+            .update(req.body)
+            .then(() => {
+                res.redirect(`../dashboard/${req.params.rid}`)
             })
     }
 }
