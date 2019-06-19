@@ -10,7 +10,7 @@
     color: black;
 }
 
-.user-container {
+.dash-container {
     margin: 2em;
 }
 
@@ -200,6 +200,7 @@ button:focus {
 .fa-plus {
     float: right;
     padding-right: 8px;
+    padding-top: 5px;
 }
 
 .app {
