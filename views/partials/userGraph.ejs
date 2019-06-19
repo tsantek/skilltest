@@ -28,28 +28,26 @@
   })
 
   var myChart = new Chart(ctx, {
-      type: 'radar',
+      type: 'horizontalBar',
       data: {
           labels: labels,
           datasets: [{
               label: 'Correct Answers',
-              data: Object.values(correct),
+              data: correct,
               backgroundColor: "rgb(15, 56, 191, 0.5)"
           }]
       },
       options: {
         responsive: false,
         maintainAspectRatio: true,
-        scale: {
-          ticks: {
-            beginAtZero: true,
-            min: 0,
-            max: 100,
-            stepSize: 50
-          },
-          pointLabels: {
-            fontSize: 18
-          }
+        scales: {
+          xAxes: [{
+            display: true,
+            ticks: {
+              beginAtZero: true,
+              suggestedMax: 100
+            }
+          }]
         },
         legend: {
           position: 'center'
