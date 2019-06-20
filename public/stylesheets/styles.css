@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 .nav-item-right {
     padding: 0 15px 0 0;
 }
@@ -9,6 +13,7 @@
 .row {
     margin: 0;
 }
+
 .navbar a {
     color: black;
 }
