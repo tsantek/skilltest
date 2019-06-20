@@ -1,6 +1,6 @@
 <div class="dash-item">
   <table class="table">
- 
+    <h4 style="padding:.5em;">Assigned Tests</h4>
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -17,7 +17,11 @@
           <td><%=result[i].email%></td>
           <td><%=result[i].name%></td>
           <td><%=result[i].correct%>/<%=result[i].total%></td>
-          <td><div class="status-notstarted">Not Started</div></td>
+          <% if (result[i].completed) { %>
+            <td><div class="status-complete">Completed</div></td>
+          <% } else { %>
+            <td><div class="status-notstarted">Not Started</div></td>
+          <% } %>
         </tr>
         <% } %>
       </tbody>

@@ -128,6 +128,9 @@ table {
 table:hover {
     opacity: 1;
 }
+.table {
+    margin-bottom: 2%;
+}
 
 .sidenav-wrapper {
     display: flex;
@@ -259,6 +262,10 @@ button:focus {
     background-color: #4E3B77;
     border: #4E3B77;
     margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #42548E;
 }
 
 .user-heading {
