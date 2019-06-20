@@ -125,8 +125,10 @@
                                     <div class="form-group">
                                         <label for="addTestToUser" class="add-test-to-user">Add Test to <%=result[0].user_Name%></label>
                                         <select name="test_id" class="form-control" id="addTestToUser">
-                                          <% for(let i =0; i < test.length; i++){%>
+                                          <% for(let i =0; i < test.length; i++){ %>                                      
+                                          <% if(!test[i].total == 0){ %>
                                           <option value="<%=test[i].id %>"><%=test[i].name %></option>
+                                          <%}%>
                                           <% } %>
                                         </select>
                                       </div>
