@@ -11,15 +11,25 @@
 
     <form method='post' action='/dashboard/<%=recruiter[0].id%>/adduser'>
       <div class="form-group">
-        <label for="userName">User Name</label>
+        <label for="userName">Name</label>
         <input type="text" class="form-control" name='name' id="userName">
       </div>
       <div class="form-group">
-        <label for="userEmail">User Email</label>
+        <label for="userEmail">Email</label>
         <input type="text" class="form-control" name='email' id="userEmail">
       </div>
       <div class="form-group">
-    </div>
+        <label for="userLocation">Location</label>
+        <input type="text" class="form-control" name='location' id="userLocation">
+      </div>
+      <div class="form-group">
+        <label for="userURL">LinkedIn Profile URL</label>
+        <input type="text" class="form-control" name='linkedin' id="userURL">
+      </div>
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea class="form-control" id="bio" name='bio' rows="3"></textarea>
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </body>

@@ -28,6 +28,9 @@ module.exports = {
         knex('users').insert({
             name: req.body.name,
             email: req.body.email,
+            location: req.body.location,
+            bio: req.body.bio,
+            linkedin: req.body.linkedin,
             recruiters_id: req.params.id,
             notes: []
         }).returning('*').then((result) => {
