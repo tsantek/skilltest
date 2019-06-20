@@ -115,7 +115,8 @@ module.exports = {
     start: (req,res) => {
       knex('users').where('email', req.body.email).then((user) => {
         if(user.length < 1) {
-          res.send('We don\'t have this email address on file, please check with the recruiter who gave you this link')
+          var message = {content: 'We don\'t have this email address on file, please check with the recruiter who gave you this link'}
+          res.render('pages/message', {message})
         } else {
           knex('tests').where('id', req.params.tid).then((tests) => {
             knex('questions').where('test_id', req.params.tid).then((result) => {
@@ -135,7 +136,8 @@ module.exports = {
                   var question = result;
                   res.render('pages/start', {question, test, user, tests});
                 } else {
-                  res.send('You\'ve already submitted this test.  Contact your recruiter if you would like to take the test again')
+                  var message = {content: 'You\'ve already submitted this test.  Contact your recruiter if you would like to take the test again'}
+                  res.render('pages/message', {message})
                 }
               })
             })
@@ -168,7 +170,8 @@ module.exports = {
               knex('tests_completed').where('id', results[resultsIndex].id).update({
                 completed: true
               }).then(() => {
-                res.send('Test Completed!')
+                var message = {content: 'Test Completed!'}
+                res.render('pages/message', {message})
               })
             } else {
               knex('questions').where('test_id', req.params.tid).then((result) => {
@@ -185,7 +188,8 @@ module.exports = {
             knex('tests_completed').where('id', results[resultsIndex].id).update({
               completed: true
             }).then(() => {
-              res.send('Test Completed!')
+              var message = {content: 'Test Completed!'}
+              res.render('pages/message', {message})
             })
           } else {
             knex('questions').where('test_id', req.params.tid).then((result) => {
