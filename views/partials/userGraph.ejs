@@ -1,7 +1,7 @@
 <% if (result[0].name) { %>
   <div class="user-chart">
     <h5>Latest Test Result</h5>
-    <canvas id="test-chart">Your browser does not support the canvas feature.</canvas>
+    <canvas style="background-color: white; padding: 1em;" class="dash-item" id="test-chart">Your browser does not support the canvas feature.</canvas>
   </div>  
 <% } %>
 
@@ -49,7 +49,7 @@
             }
           }],
           yAxes: [{
-            maxBarThickness: 50
+            maxBarThickness: 30
           }]
         },
         legend: {
