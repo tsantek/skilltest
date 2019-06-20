@@ -28,12 +28,17 @@ module.exports = function(app) {
     app.post('/dashboard/:id/adduser', user.createUser);
     app.post('/notes/:rid/addnote/:uid', user.addNote);
 
+
+
+
     app.get('/dashboard/:rid/test/:tid', template.testInfo);
 
     app.get('/dashboard/profile/helpPage/:rid', template.helpPage);
 
     app.get('/dashboard/profile/:rid', template.profileEdit);
     app.post('/editprofile/:rid', template.updateProfile);
+
+    app.post('/addtesttouser/:uid/:rid', template.addTestToUser);
 
 
 
