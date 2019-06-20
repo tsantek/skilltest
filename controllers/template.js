@@ -189,5 +189,65 @@ module.exports = {
             .then(() => {
                 res.redirect(`../../dashboard/${req.params.rid}/user/${req.params.uid}`)
             })
-    }
+    },
+    about: (req, res) => {
+        knex('users')
+            .where('recruiters_id', req.params.rid)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.rid)
+                    .then((test) => {
+                        knex('recruiters')
+                            .where('id', req.params.rid)
+                            .then((recruiter) => {
+                                res.render("pages/about", { user, test, recruiter })
+                            })
+                    })
+            })
+    },
+    services: (req, res) => {
+        knex('users')
+            .where('recruiters_id', req.params.rid)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.rid)
+                    .then((test) => {
+                        knex('recruiters')
+                            .where('id', req.params.rid)
+                            .then((recruiter) => {
+                                res.render("pages/services", { user, test, recruiter })
+                            })
+                    })
+            })
+    },
+    clients: (req, res) => {
+        knex('users')
+            .where('recruiters_id', req.params.rid)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.rid)
+                    .then((test) => {
+                        knex('recruiters')
+                            .where('id', req.params.rid)
+                            .then((recruiter) => {
+                                res.render("pages/clients", { user, test, recruiter })
+                            })
+                    })
+            })
+    },
+    contacts: (req, res) => {
+        knex('users')
+            .where('recruiters_id', req.params.rid)
+            .then((user) => {
+                knex('tests')
+                    .where('recruiters_id', req.params.rid)
+                    .then((test) => {
+                        knex('recruiters')
+                            .where('id', req.params.rid)
+                            .then((recruiter) => {
+                                res.render("pages/contact", { user, test, recruiter })
+                            })
+                    })
+            })
+    },
 }
