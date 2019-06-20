@@ -43,7 +43,7 @@
 }
 
 .sells {
-    background-color: lightgray;
+    background-color: Gainsboro;
 }
 
 .sell form {
@@ -72,7 +72,7 @@
     height: 0;
     border-left: 49vw solid transparent;
     border-right: 49vw solid transparent;
-    border-top: 100px solid lightgray;
+    border-top: 100px solid Gainsboro;
 }
 
 .icons {

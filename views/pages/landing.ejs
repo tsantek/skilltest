@@ -17,6 +17,29 @@
     text-align:center;
     padding:40px 0 30px 0;
   }
+
+  .badge-img{
+    margin-top:40px;
+    background-color:Gainsboro;
+  }
+
+  .badge-img p{
+    padding: 10px;
+  }
+
+  .badge-img img {
+    width: 100px;
+    max-height: 100px;
+  }
+
+  .call{
+    border-bottom:none;
+  }
+
+  .footer-text{
+    text-align:center;
+    padding-top:30px;
+  }
   
   </style>
     <header>
@@ -90,11 +113,28 @@
         <img src="/assets/img/slack.svg">
         </div>
 
+    </div>
+
+        <div class="badge-img">
+        <div class="container">
+        <div class="row">
+          <div class="col-md-6 d-flex  align-items-center justify-content-between">
+            <img src="/assets/img/spring_badge.svg">
+            <p>Skill Test named a high performer in Applicant Tracking.
+            </p>
+          </div>
+          
+          <div class="col-md-6 d-flex  align-items-center justify-content-between">
+          <img src="/assets/img/capterra_badge.png">
+          <p>Skill Test named one of the top 5 most user-friendly applicant tracking systems by Capterra.</p>
+          </div>
+        </div>
+              </div>
       </div>
 
+      <p class="footer-text">Skill Test 2019 </p>
 
-
-    </div>
+ 
 
     <% include ../partials/bs.ejs %>
   </body>
