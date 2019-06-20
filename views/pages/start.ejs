@@ -11,14 +11,28 @@
       label {
         color: white;
       }
+      img {
+        width: 300px;
+        margin-bottom: 1em;
+        border-radius: 1em;
+      }
     </style>
+    <!-- <script>
+    var submitButton = querySelector('#submit');
+
+    setTimeout(function() {
+      console.log('hello')
+      submitButton.submit()
+    }, 1200)
+    </script> -->
     <title></title>
   </head>
   <body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class='main'>
+      <img src='/assets/img/2-minutes.gif'>
       <div class='board user-form'>
         <h3><%=question[0].question%></h3>
-        <form method="post" action="/taketest/next/<%=test%>/<%=user[0].id%>/<%=question[0].id%>">
+        <form id='submit' method="post" action="/taketest/next/<%=test%>/<%=user[0].id%>/<%=question[0].id%>">
           <div class="form-group form-check">
             <input type="radio" name='response' class="form-check-input" value='correct' id="Check1">
             <label class="form-check-label" for="exampleCheck1"><%=question[0].correct%></label>
