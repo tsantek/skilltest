@@ -1,4 +1,5 @@
 const knex = require("../db/knex.js");
+var questionIterator = 0;
 
 module.exports = {
     create: (req, res) => {
@@ -97,39 +98,79 @@ module.exports = {
         })
     },
 
-    start: (req, res) => {
-        knex('users').where('email', req.body.email).then((user) => {
-            if (user.length < 1) {
-                res.send('We don\'t have this email address on file, please check with the recruiter who gave you this link')
-            } else {
-                knex('tests_completed').insert({
-                    test_id: req.params.tid,
-                    user_id: user[0].id,
-                    total: 0,
-                    correct: 0,
-                    recruiters_id: user[0].recruiters_id
-                }).then(() => {
-                    knex('questions').where('test_id', req.params.tid).then((result) => {
-                        var test = req.params.tid;
-                        var question = result;
-                        res.render('pages/start', { question, test, user });
-                    })
-                })
-            }
+    start: (req,res) => {
+      knex('users').where('email', req.body.email).then((user) => {
+        if(user.length < 1) {
+          res.send('We don\'t have this email address on file, please check with the recruiter who gave you this link')
+        } else {
+          console.log(user);
+        knex('tests').where('id', req.params.tid).then((tests) => {
+          knex('tests_completed').insert({
+            test_id: req.params.tid,
+            user_id: user[0].id,
+            total: tests[0].total,
+            correct: 0,
+            recruiters_id: user[0].recruiters_id,
+            completed: false
+        }).then(() => {
+          knex('questions').where('test_id', req.params.tid).then((result) => {
+            var test = req.params.tid;
+            var question = result;
+            res.render('pages/start', {question, test, user, tests});
+        })
         })
     },
 
-    next: (req, res) => {
-        knex('tests_completed').where('user_id', req.params.uid)
-            .where('test_id', req.params.tid).then((results) => {
-                var attempt = 0;
-                for (var i = 0; i < results.length; i++) {
-                    if (results[i].id > attempt) {
-                        attempt = results[i].id;
-                    }
-                };
-
+    next: (req,res) => {
+      var user = [{id: req.params.uid}];
+      questionIterator ++;
+      knex('tests_completed').where('user_id', req.params.uid)
+      .where('test_id', req.params.tid).then((results) => {
+        var attempt = 0;
+        for (var i = 0; i < results.length; i++) {
+          if (results[i].id > attempt) {
+            attempt = i;
+          }
+        };
+        var newCorrect = (results[attempt].correct + 1)
+        if(req.body.response == 'correct') {
+          console.log('Im inside')
+          knex('tests_completed').where("id", results[attempt].id).update({
+            correct: newCorrect
+          }).then(() => {
+            knex('questions').where('test_id', req.params.tid).then((result) => {
+              if (results[attempt].total < (questionIterator + 1)) {
+                knex('tests_completed').where("id", results[attempt].id).update({
+                  completed: true
+                }).then(()=> {
+                res.send('Thank you for completing the test!  Your recruiter will be in touch soon!');
+                questionIterator = 0;
+                })
+              } else {
+              var test = req.params.tid;
+              var question = [result[questionIterator]];
+              console.log(question)
+              res.render('pages/start', {question, test, user});
+            }
             })
-        res.send(`${req.body.response}, ${req.params.tid}, ${req.params.qid}`);
+          })
+        } else {
+            knex('questions').where('test_id', req.params.tid).then((result) => {
+              if (results[attempt].total < (questionIterator + 1)) {
+                knex('tests_completed').where("id", results[attempt].id).update({
+                  completed: true
+                }).then(()=> {
+                res.send('Thank you for completing the test!  Your recruiter will be in touch soon!');
+                questionIterator = 0;
+                })
+              } else {
+              var test = req.params.tid;
+              var question = [result[questionIterator]];
+              res.render('pages/start', {question, test, user});
+            }
+        })
+      }
+    })
+
     }
 }
