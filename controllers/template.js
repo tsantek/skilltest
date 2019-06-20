@@ -98,7 +98,7 @@ module.exports = {
                                         } else {
                                             knex('users')
                                                 .where('id', req.params.uid)
-                                                .select('users.name AS user_Name', 'users.email', 'users.notes', 'users.id AS user_id')
+                                                .select('users.name AS user_Name', 'users.email', 'users.notes', 'users.id AS user_id', 'users.bio', 'users.linkedin', 'users.location')
                                                 .then(userResult => {
                                                     result = userResult
                                                     res.render("pages/userPage", { user, test, result, recruiter });
