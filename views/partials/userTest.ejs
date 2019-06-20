@@ -4,8 +4,13 @@
     thead {
       padding: 2em;
     }
+
+    .notes-add-test-to-user-container {
+      display: flex;
+    }
+
     .container-card {
-        width: 100%;
+        width: 49%;
         background-color: white;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
         height: 100%;
@@ -100,7 +105,7 @@
                 <% } %>
                     <div class="notes-add-test-to-user-container row d-flex justify-content-between">
                         <!-- NOTES -->
-                        <div class="container-card col-md-6">
+                        <div class="container-card">
                             <div class="user-notes">
                                 <h4 class="notes">Notes about
                                     <%= result[0].user_Name%>:</h4>
@@ -119,7 +124,7 @@
                         </div>
 
                         <!-- ADD TEST TO USER -->
-                        <div class="container-card col-md-5">
+                        <div class="container-card">
                             <div class="user-notes">
                                 <form method="POST" action="/addtesttouser/<%=result[0].user_id%>/<%=recruiter[0].id%>">
                                     <div class="form-group">
