@@ -1,6 +1,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 
 <style>
+    thead {
+      padding: 2em;
+    }
     .container-card {
         width: 100%;
         background-color: white;
@@ -14,7 +17,7 @@
       background-color: #4E3B77;
     }
     .user-note {
-      padding: .5em;
+      padding: .5em 0;
       border-bottom: solid .5px lightgrey;
       display: flex;
     }
@@ -50,6 +53,7 @@
           <div class="test-table">
             <div class="dash-item">
                 <table class="table">
+                  <h4 style="padding:.5em;">Assigned Tests</h4>
                     <thead>
                         <tr>
                             <th scope="col">Test</th>
@@ -98,8 +102,8 @@
                         <!-- NOTES -->
                         <div class="container-card col-md-6">
                             <div class="user-notes">
-                                <h5 class="notes">Notes about
-                                    <%= result[0].user_Name%>:</h5>
+                                <h4 class="notes">Notes about
+                                    <%= result[0].user_Name%>:</h4>
                                 <% for (let i = 0; i < result[0].notes.length; i++) { %>
                                     <div class="user-note">
                                         <span class="note"><%=result[0].notes[i].note%></span><span class="date"><%=result[0].notes[i].date%></span>
