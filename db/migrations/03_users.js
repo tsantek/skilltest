@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
         table.string('email').unique();
         table.string('location');
         table.string('bio');
+        table.string('linkedin');
         table.specificType('notes', 'json[]');
         table.integer('recruiters_id')
             .references('id')
