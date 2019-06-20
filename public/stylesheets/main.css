@@ -69,10 +69,9 @@
 }
 
 .background-triangle {
-    width: 100vw;
     height: 0;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
+    border-left: 49vw solid transparent;
+    border-right: 49vw solid transparent;
     border-top: 100px solid lightgray;
 }
 
