@@ -6,6 +6,42 @@
     <title>Skill Test</title>
   </head>
   <body>
+  <style>
+  .clients img {
+    width: 100px;
+    max-height: 50px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+  }
+  .call h3{
+    text-align:center;
+    padding:40px 0 30px 0;
+  }
+
+  .badge-img{
+    margin-top:40px;
+    background-color:Gainsboro;
+  }
+
+  .badge-img p{
+    padding: 10px;
+  }
+
+  .badge-img img {
+    width: 100px;
+    max-height: 100px;
+  }
+
+  .call{
+    border-bottom:none;
+  }
+
+  .footer-text{
+    text-align:center;
+    padding-top:30px;
+  }
+  
+  </style>
     <header>
       <% include ../partials/nav.ejs %>
     </header>
@@ -63,13 +99,42 @@
       </div>
 
       <div class='call container'>
-
-
-      </div>
-
-
+      <h3>Trusted by these amazing brands</h3>
+        <div class="clients d-flex align-items-center row justify-content-between">
+        <img src="/assets/img/google.svg">
+        <img src="/assets/img/adobe.svg">
+        <img src="/assets/img/github.svg">
+        <img src="/assets/img/godaddy.svg">
+        <img src="/assets/img/microsoft.svg">
+        <img src="/assets/img/google.svg">
+        <img src="/assets/img/netflix.svg">
+        <img src="/assets/img/oracle.svg">
+        <img src="/assets/img/paypal.svg">
+        <img src="/assets/img/slack.svg">
+        </div>
 
     </div>
+
+        <div class="badge-img">
+        <div class="container">
+        <div class="row">
+          <div class="col-md-6 d-flex  align-items-center justify-content-between">
+            <img src="/assets/img/spring_badge.svg">
+            <p>Skill Test named a high performer in Applicant Tracking.
+            </p>
+          </div>
+          
+          <div class="col-md-6 d-flex  align-items-center justify-content-between">
+          <img src="/assets/img/capterra_badge.png">
+          <p>Skill Test named one of the top 5 most user-friendly applicant tracking systems by Capterra.</p>
+          </div>
+        </div>
+              </div>
+      </div>
+
+      <p class="footer-text">Skill Test 2019 </p>
+
+ 
 
     <% include ../partials/bs.ejs %>
   </body>
