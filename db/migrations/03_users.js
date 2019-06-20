@@ -3,7 +3,9 @@ exports.up = function(knex, Promise) {
         table.increments('id').primary();
         table.string('name');
         table.string('email').unique();
-        table.specificType('notes', 'json[]')
+        table.string('location');
+        table.string('bio');
+        table.specificType('notes', 'json[]');
         table.integer('recruiters_id')
             .references('id')
             .inTable('recruiters')
