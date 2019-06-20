@@ -55,6 +55,9 @@ module.exports = {
                                 })
                         })
                 })
+        }).catch(err => {
+          console.log(err);
+          res.redirect(`/dashboard/${req.params.id}/adduser`)
         })
     },
 
