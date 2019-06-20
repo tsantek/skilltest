@@ -89,7 +89,7 @@ module.exports = {
                                 knex(`users`)
                                     .join('tests_completed', 'tests_completed.user_id', 'users.id')
                                     .join('tests', 'tests_completed.test_id', 'tests.id')
-                                    .select('tests.name', 'tests_completed.total', 'tests_completed.correct', 'users.name AS user_Name', 'users.email', 'users.id AS user_id', 'users.notes', 'tests_completed.created_at')
+                                    .select('tests.name', 'tests_completed.total', 'tests_completed.correct', 'users.name AS user_Name', 'users.email', 'users.id AS user_id', 'users.notes', 'tests_completed.created_at', 'tests_completed.completed')
                                     .where('users.id', req.params.uid)
                                     .then((result) => {
                                         if (result.length > 0) {
