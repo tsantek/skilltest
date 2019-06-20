@@ -196,5 +196,9 @@ module.exports = {
           }
         }
       })
+    },
+
+    landingcode: (req , res) => {
+      res.redirect(`/taketest/${req.body.testcode}`)
     }
 }
