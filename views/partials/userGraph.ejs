@@ -1,0 +1,61 @@
+<% if (result[0].name) { %>
+  <div class="user-chart">
+    <h5>Latest Test Result</h5>
+    <canvas style="background-color: white; padding: 1em;" class="dash-item" id="test-chart">Your browser does not support the canvas feature.</canvas>
+  </div>  
+<% } %>
+
+<script type="text/javascript">
+  var canvas = document.getElementById("test-chart");
+  var ctx = canvas.getContext("2d");
+  var result = <%- JSON.stringify(result); %>;
+  let testObj = {};
+
+  result.forEach(test => {
+    if (testObj[test.name]) {
+      if (testObj[test.name].created_at < test.created_at) {
+        testObj[test.name] = test;
+      } 
+    } else {
+      testObj[test.name] = test;
+    }
+  })
+  var labels = Object.keys(testObj)
+  var correct = Object.keys(testObj).map(test => {
+    return (
+      (testObj[test].correct / testObj[test].total) * 100
+    )
+  })
+
+  var myChart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: 'Score',
+              data: correct,
+              backgroundColor: "rgb(15, 56, 191, 0.5)"
+          }]
+      },
+      options: {
+        responsive: false,
+        maintainAspectRatio: true,
+        scales: {
+          xAxes: [{
+            display: true,
+            ticks: {
+              beginAtZero: true,
+              suggestedMax: 100
+            }
+          }],
+          yAxes: [{
+            maxBarThickness: 30
+          }]
+        },
+        legend: {
+          position: 'center'
+        }
+
+      }
+  });
+</script>

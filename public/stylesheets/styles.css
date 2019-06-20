@@ -6,6 +6,9 @@
     height: 8vh;
 }
 
+.row {
+    margin: 0;
+}
 .navbar a {
     color: black;
 }
@@ -215,7 +218,8 @@ button:focus {
 }
 
 .status-complete {
-    background: green;
+    background: rgb(73, 140, 73);
+    color: white;
     padding: 5px;
     border-radius: 5px;
     text-align: center;
@@ -246,6 +250,12 @@ button:focus {
     color: white;
 }
 
+.btn-primary {
+    background-color: #4E3B77;
+    border: #4E3B77;
+    margin-top: 10px;
+}
+
 .user-heading {
     padding: 10px;
     display: flex;
@@ -269,7 +279,7 @@ button:focus {
 }
 
 #test-chart {
-    width: 400px;
+    width: 500px;
 }
 
 
