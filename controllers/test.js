@@ -119,6 +119,9 @@ module.exports = {
             res.render('pages/start', {question, test, user, tests});
         })
         })
+      })
+    }
+  })
     },
 
     next: (req,res) => {
