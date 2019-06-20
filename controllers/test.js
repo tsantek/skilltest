@@ -65,8 +65,15 @@ module.exports = {
             recruiters_id: req.params.rid,
             test_id: req.params.tid
         }).then(() => {
-            res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
-        })
+          knex('tests').where('id', req.params.tid).then((result) => {
+            var newTotal = (result[0].total + 1)
+            knex('tests').where('id', req.params.tid).update({
+              total: newTotal
+            }).then(() => {
+              res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
+            })
+          })
+          })
     },
 
     delete: (req, res) => {
@@ -87,9 +94,16 @@ module.exports = {
     },
 
     deleteQ: (req, res) => {
-        knex('questions').where('id', req.params.qid).del().then(() => {
-            res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
+      knex('tests').where('id', req.params.tid).then((result) => {
+        var newTotal = (result[0].total - 1)
+        knex('tests').where('id', req.params.tid).update({
+          total: newTotal
+        }).then(() => {
+          knex('questions').where('id', req.params.qid).del().then(() => {
+              res.redirect(`/dashboard/${req.params.rid}/test/${req.params.tid}`)
+          })
         })
+      })
     },
 
     taketest: (req, res) => {
@@ -131,11 +145,8 @@ module.exports = {
     },
 
     next: (req,res) => {
-      //  Define User
       var user = [{id: req.params.uid}];
-      // Increment Q
       questionIterator ++;
-      // Find largest attempt id
       knex('tests_completed').where('user_id', req.params.uid)
       .where('test_id', req.params.tid).then((results) => {
         var attempt = 0
@@ -146,9 +157,6 @@ module.exports = {
             resultsIndex = i
           }
         }
-        //if correct
-              // knex current correct amount
-              // update correct amount
         if (req.body.response == 'correct') {
           var newCorrect = (results[resultsIndex].correct + 1)
           knex('tests_completed').where('id', results[resultsIndex].id).update({
@@ -187,76 +195,6 @@ module.exports = {
             })
           }
         }
-        //if @ end stop and send completion
-
-        //render next question
-
       })
     }
-
-    // next: (req,res) => {
-    //   var user = [{id: req.params.uid}];
-    //   questionIterator ++;
-    //   knex('tests_completed').where('user_id', req.params.uid)
-    //   .where('test_id', req.params.tid).max('id').returning('*').then((results) => {
-    //     // var attempt = 0;
-    //     // for (var i = 0; i < results.length; i++) {
-    //     //   if (results[i].id > attempt) {
-    //     //     attempt = i;
-    //     //   }
-    //     // };
-    //     // console.log(attempt);
-    //     // console.log(results[attempt].correct)
-    //     knex('tests_completed').where('id', results[0].max).then((answer) => {
-    //       newCorrect = (answer[0].correct + 1)
-    //     })
-    //
-    //     // console.log(newCorrect)
-    //     var attempt = results[0].max
-    //     if(req.body.response == 'correct') {
-    //       console.log(results)
-    //       knex('tests_completed').where('id', results[0].max).update({
-    //         correct: newCorrect
-    //       }).then(() => {
-    //         console.log('wut')
-    //         knex('questions').where('test_id', req.params.tid).then((result) => {
-    //           knex('tests_completed').where('id', results[0].max).then((attempt) => {
-    //           if (attempt[0].total < (questionIterator + 1)) {
-    //             knex('tests_completed').where("id", results[0].max).update({
-    //               completed: true
-    //             }).then(()=> {
-    //             res.send('Thank you for completing the test!  Your recruiter will be in touch soon!');
-    //             questionIterator = 0;
-    //             })
-    //           } else {
-    //           var test = req.params.tid;
-    //           var question = [result[questionIterator]];
-    //           console.log(question)
-    //           res.render('pages/start', {question, test, user});
-    //         }
-    //         })
-    //       })
-    //       })
-    //     } else {
-    //         knex('questions').where('test_id', req.params.tid).then((result) => {
-    //           knex('tests_completed').where('id', results[0].max).then((attempt) => {
-    //             if (attempt[0].total < (questionIterator + 1)) {
-    //               knex('tests_completed').where("id", results[0].max).update({
-    //                 completed: true
-    //               }).then(()=> {
-    //               res.send('Thank you for completing the test!  Your recruiter will be in touch soon!');
-    //               questionIterator = 0;
-    //               })
-    //             } else {
-    //             var test = req.params.tid;
-    //             var question = [result[questionIterator]];
-    //             res.render('pages/start', {question, test, user});
-    //           }
-    //           })
-    //
-    //     })
-    //   }
-    // })
-    //
-    // }
 }
