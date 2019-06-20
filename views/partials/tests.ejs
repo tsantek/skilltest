@@ -1,4 +1,5 @@
 <div class="dash-item">
+    <h4 style="padding:.5em;"><%=recruiter[0].name%>'s Tests</h4>
     <table class="table">
         <a href="/dashboard/create/<%=recruiter[0].id%>"><button type="button" class="btn purple-btn">Create Test</button></a>
         <thead>
@@ -15,9 +16,10 @@
           <tr>
             <th scope="row"><%=test[i].name%></th>
             <td><%=test[i].total%></td>
-            <td><%=test[i].created_at%></td>
+            <td><%=test[i].created_at.toLocaleDateString()%></td>
             <td><%=test[i].code%></td>
-            <td><a>http://localhost/</a></td>
+            
+            <td><a class="clone-btn" onclick="copyToClipboard('#link<%=i%>')"><i class="far fa-clone"></i></a> <a id="link<%=i%>" target="blank" href="http://localhost:8000/taketest/<%=test[i].code%>">Link</a></td>
           </tr>
         <% } %>
         </tbody>
@@ -26,3 +28,14 @@
       <p>You don't have any Tests!</p>
         <% } %>
   </div>
+
+  <script>
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).attr('href')).select();
+        console.log($(element).text())
+        document.execCommand("copy");
+        $temp.remove();
+    }
+</script>
