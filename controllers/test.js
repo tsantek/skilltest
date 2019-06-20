@@ -199,6 +199,7 @@ module.exports = {
     },
 
     landingcode: (req , res) => {
-      res.redirect(`/taketest/${req.body.testcode}`)
+      var trimcode = req.body.testcode.trim();
+      res.redirect(`/taketest/${trimcode}`)
     }
 }
