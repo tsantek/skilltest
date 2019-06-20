@@ -56,10 +56,11 @@ module.exports = {
     },
 
     addNote: (req, res) => {
+      const date = new Date().toLocaleDateString();
         knex('users')
             .where('id', req.params.uid)
             .update({
-                notes: knex.raw('array_append(notes, ?)', [req.body.note])
+                notes: knex.raw('array_append(notes, ?)', [{date: date, note: req.body.note}])
             }).then(() => {
                 res.redirect(`/dashboard/${req.params.rid}/user/${req.params.uid}`)
             })

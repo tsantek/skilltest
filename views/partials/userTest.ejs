@@ -13,6 +13,22 @@
     .progress-bar {
       background-color: #4E3B77;
     }
+    .user-note {
+      padding: .5em;
+      border-bottom: solid .5px lightgrey;
+      display: flex;
+    }
+    .user-note .note {
+      flex: 1;
+    }
+    .user-note .date{
+      align-self: flex-end;
+    }
+
+    .user-notes form {
+      margin-top: 1em;
+    }
+  
 </style>
 
 
@@ -75,14 +91,14 @@
                 <% } %>
                     <div class="notes-add-test-to-user-container row d-flex justify-content-between">
                         <!-- NOTES -->
-                        <div class="container-card col-md-5">
+                        <div class="container-card col-md-6">
                             <div class="user-notes">
                                 <h5 class="notes">Notes about
                                     <%= result[0].user_Name%>:</h5>
                                 <% for (let i = 0; i < result[0].notes.length; i++) { %>
-                                    <p>
-                                        <%=result[0].notes[i]%>
-                                    </p>
+                                    <div class="user-note">
+                                        <span class="note"><%=result[0].notes[i].note%></span><span class="date"><%=result[0].notes[i].date%></span>
+                                    </div>
                                     <% } %>
                                         <form action="/notes/<%=recruiter[0].id%>/addnote/<%=result[0].user_id%>" method="post" id="notes">
                                             <div class="form-group">
