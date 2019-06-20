@@ -93,7 +93,6 @@ module.exports = {
                                     .where('users.id', req.params.uid)
                                     .then((result) => {
                                         if (result.length > 0) {
-                                            console.log(user)
                                             res.render("pages/userPage", { user, test, result, recruiter });
                                         } else {
                                             knex('users')
@@ -177,18 +176,24 @@ module.exports = {
             })
     },
     addTestToUser: (req, res) => {
-        console.log(req.body)
-        knex('tests_completed')
-            .insert({
-                test_id: req.body.test_id,
-                user_id: req.params.uid,
-                correct: 0,
-                completed: false,
-                recruiters_id: req.params.rid
+        knex('tests')
+            .where('id', req.body.test_id)
+            .then((test) => {
+                knex('tests_completed')
+                    .insert({
+                        test_id: req.body.test_id,
+                        user_id: req.params.uid,
+                        correct: 0,
+                        total: test[0].total,
+                        completed: false,
+                        recruiters_id: req.params.rid
+                    })
+                    .then(() => {
+                        res.redirect(`../../dashboard/${req.params.rid}/user/${req.params.uid}`)
+                    })
             })
-            .then(() => {
-                res.redirect(`../../dashboard/${req.params.rid}/user/${req.params.uid}`)
-            })
+
+
     },
     about: (req, res) => {
         knex('users')
