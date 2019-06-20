@@ -40,7 +40,10 @@ module.exports = function(app) {
 
     app.post('/addtesttouser/:uid/:rid', template.addTestToUser);
 
-
+    app.get('/about/:rid', template.about);
+    app.get('/services/:rid', template.services);
+    app.get('/clients/:rid', template.clients);
+    app.get('/contact/:rid', template.contacts);
 
 
     function authMiddleware(req, res, next) {
