@@ -4,9 +4,19 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/styles.css">
+    <style>
+      h3 {
+        color: white;
+      }
+      label {
+        color: white;
+      }
+    </style>
     <title></title>
   </head>
   <body>
+    <div class='main'>
+      <div class='board user-form'>
     <h3><%=question[0].question%></h3>
     <form method="post" action="/taketest/next/<%=test%>/<%=user[0].id%>/<%=question[0].id%>">
       <div class="form-group form-check">
@@ -23,5 +33,7 @@
       </div>
       <input type="submit" value="submit">
     </form>
+  </div>
+</div>
   </body>
 </html>
