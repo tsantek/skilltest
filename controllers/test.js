@@ -1,4 +1,5 @@
 const knex = require("../db/knex.js");
+const helpers = require('../public/js/helpers.js')
 var questionIterator = 0;
 
 module.exports = {
@@ -132,8 +133,10 @@ module.exports = {
                 }
                 if (results[resultsIndex].completed == false) {
                   var test = req.params.tid;
-                  var question = result;
-                  res.render('pages/start', {question, test, user, tests});
+                  var question = result
+                  var arr = [['correct', 'correct'], ['false_question_one', 'incorrect'], ['false_question_two', 'incorrect']]
+                  var newArr = helpers.shuffle(arr);
+                  res.render('pages/start', {question, test, user, tests, newArr});
                 } else {
                   var message = {content: 'You\'ve already submitted this test.  Contact your recruiter if you would like to take the test again'}
                   res.render('pages/message', {message})
@@ -176,7 +179,10 @@ module.exports = {
               knex('questions').where('test_id', req.params.tid).then((result) => {
                 var test = req.params.tid
                 var question = [result[questionIterator]]
-                res.render('pages/start', {question, test, user})
+                var arr = [['correct', 'correct'], ['false_question_one', 'incorrect'], ['false_question_two', 'incorrect']]
+                var newArr = helpers.shuffle(arr);
+                console.log(newArr)
+                res.render('pages/start', {question, test, user, newArr})
               })
             }
           })
@@ -194,7 +200,12 @@ module.exports = {
             knex('questions').where('test_id', req.params.tid).then((result) => {
               var test = req.params.tid
               var question = [result[questionIterator]]
-              res.render('pages/start', {question, test, user})
+              // var arr = [['correct', 'correct'], ['false_question_one', 'incorrect'], []]
+              // console.log(question)
+              var arr = [['correct', 'correct'], ['false_question_one', 'incorrect'], ['false_question_two', 'incorrect']]
+              var newArr = helpers.shuffle(arr);
+              res.render('pages/start', {question, test, user, newArr})
+
             })
           }
         }

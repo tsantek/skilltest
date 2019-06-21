@@ -15,15 +15,7 @@
         font-size: 30px;
       }
     </style>
-    <!-- <script>
-    var submitButton = querySelector('#submit');
-
-    setTimeout(function() {
-      console.log('hello')
-      submitButton.submit()
-    }, 1200)
-    </script> -->
-    <title></title>
+    <title>Skill Test</title>
   </head>
   <body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class='main'>
@@ -32,18 +24,18 @@
         <h3><%=question[0].question%></h3>
         <form id='submit' method="post" action="/taketest/next/<%=test%>/<%=user[0].id%>/<%=question[0].id%>">
           <div class="form-group form-check">
-            <input type="radio" name='response' class="form-check-input" value='correct' id="Check1">
-            <label class="form-check-label" for="exampleCheck1"><%=question[0].correct%></label>
+            <input type="radio" name='response' class="form-check-input" value=<%=newArr[0][1]%> id="Check1">
+            <label class="form-check-label" for="exampleCheck1"><%=question[0][newArr[0][0]]%></label>
           </div>
           <div class="form-group form-check">
-            <input type="radio" name='response' value='incorrect' class="form-check-input" id="Check2">
-            <label class="form-check-label" for="exampleCheck1"><%=question[0].false_question_one%></label>
+            <input type="radio" name='response' value=<%=newArr[1][1]%> class="form-check-input" id="Check2">
+            <label class="form-check-label" for="exampleCheck1"><%=question[0][newArr[1][0]]%></label>
           </div>
           <div class="form-group form-check">
-            <input type="radio" name='response' value='incorrect' class="form-check-input" id="Check3">
-            <label class="form-check-label" for="exampleCheck1"><%=question[0].false_question_two%></label>
+            <input type="radio" name='response' value=<%=newArr[2][1]%> class="form-check-input" id="Check3">
+            <label class="form-check-label" for="exampleCheck1"><%=question[0][newArr[2][0]]%></label>
           </div>
-          <input type="submit" value="submit">
+          <input class='btn' type="submit" value="submit">
         </form>
       </div>
     </div>
@@ -76,6 +68,9 @@ window.onload = function () {
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
 };
+
+
+
 </script>
   </body>
 </html>
