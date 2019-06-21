@@ -15,7 +15,6 @@ module.exports = function(app) {
     app.post('/registerRecruiters', template.registerRecruiters);
     app.post('/loginRecruiters', template.loginRecruiters);
 
-
     app.use(authMiddleware);
     app.get('/dashboard/:id', template.dashboard);
     app.get('/dashboard/create/:id', test.create);
@@ -45,6 +44,10 @@ module.exports = function(app) {
     app.get('/services/:rid', template.services);
     app.get('/clients/:rid', template.clients);
     app.get('/contact/:rid', template.contacts);
+
+    app.get('*', function(req, res) {
+        res.render('pages/404');
+    });
 
 
     function authMiddleware(req, res, next) {
