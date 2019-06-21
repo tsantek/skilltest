@@ -44,11 +44,10 @@ module.exports = function(app) {
     app.get('/services/:rid', template.services);
     app.get('/clients/:rid', template.clients);
     app.get('/contact/:rid', template.contacts);
-
+    // 404
     app.get('*', function(req, res) {
         res.render('pages/404');
     });
-
 
     function authMiddleware(req, res, next) {
         if (!req.session.user_id) {
