@@ -27,23 +27,17 @@ module.exports = function(app) {
     app.get('/dashboard/:id/adduser', user.addUser);
     app.post('/dashboard/:id/adduser', user.createUser);
     app.post('/notes/:rid/addnote/:uid', user.addNote);
-
-
-
-
     app.get('/dashboard/:rid/test/:tid', template.testInfo);
-
     app.get('/dashboard/profile/helpPage/:rid', template.helpPage);
-
     app.get('/dashboard/profile/:rid', template.profileEdit);
     app.post('/editprofile/:rid', template.updateProfile);
-
     app.post('/addtesttouser/:uid/:rid', template.addTestToUser);
-
     app.get('/about/:rid', template.about);
     app.get('/services/:rid', template.services);
     app.get('/clients/:rid', template.clients);
     app.get('/contact/:rid', template.contacts);
+
+
     // 404
     app.get('*', function(req, res) {
         res.render('pages/404');
