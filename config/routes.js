@@ -4,6 +4,14 @@ const test = require("../controllers/test.js")
 const user = require("../controllers/user.js")
 module.exports = function(app) {
 
+    app.use(function(err, req, res, next) {
+        // Do logging and user-friendly error message display
+        console.error(err);
+        res.status(500).send();
+    });
+
+
+
     app.get('/', template.index);
     app.get('/login', template.loginPage);
     app.get('/register', template.registerPage);
@@ -14,6 +22,9 @@ module.exports = function(app) {
     app.post('/taketest/next/:tid/:uid/:qid', test.next);
     app.post('/registerRecruiters', template.registerRecruiters);
     app.post('/loginRecruiters', template.loginRecruiters);
+
+
+
 
     app.use(authMiddleware);
     app.get('/dashboard/:id', template.dashboard);

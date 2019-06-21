@@ -19,7 +19,7 @@
             <td><%=test[i].created_at.toLocaleDateString()%></td>
             <td><%=test[i].code%></td>
             
-            <td><a class="clone-btn" onclick="copyToClipboard('#link<%=i%>')"><i class="far fa-clone"></i></a> <a id="link<%=i%>" target="blank" href="http://localhost:8000/taketest/<%=test[i].code%>">Link</a></td>
+            <td><a class="clone-btn" onclick="copyToClipboard('#link<%=i%>')"><i class="far fa-clone"></i></a> <a id="link<%=i%>" target="blank" href="https://skilltest20.herokuapp.com/taketest/<%=test[i].code%>">Link</a></td>
           </tr>
         <% } %>
         </tbody>
