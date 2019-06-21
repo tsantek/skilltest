@@ -137,6 +137,8 @@ module.exports = {
                   var arr = [['correct', 'correct'], ['false_question_one', 'incorrect'], ['false_question_two', 'incorrect']]
                   var newArr = helpers.shuffle(arr);
                   res.render('pages/start', {question, test, user, tests, newArr});
+                  console.log(test)
+                  console.log(tests)
                 } else {
                   var message = {content: 'You\'ve already submitted this test.  Contact your recruiter if you would like to take the test again'}
                   res.render('pages/message', {message})
@@ -181,7 +183,6 @@ module.exports = {
                 var question = [result[questionIterator]]
                 var arr = [['correct', 'correct'], ['false_question_one', 'incorrect'], ['false_question_two', 'incorrect']]
                 var newArr = helpers.shuffle(arr);
-                console.log(newArr)
                 res.render('pages/start', {question, test, user, newArr})
               })
             }
@@ -200,8 +201,6 @@ module.exports = {
             knex('questions').where('test_id', req.params.tid).then((result) => {
               var test = req.params.tid
               var question = [result[questionIterator]]
-              // var arr = [['correct', 'correct'], ['false_question_one', 'incorrect'], []]
-              // console.log(question)
               var arr = [['correct', 'correct'], ['false_question_one', 'incorrect'], ['false_question_two', 'incorrect']]
               var newArr = helpers.shuffle(arr);
               res.render('pages/start', {question, test, user, newArr})

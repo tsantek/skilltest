@@ -1,4 +1,4 @@
-console.log('hi')
+
 module.exports = {
 
     shuffle: (a) => {
