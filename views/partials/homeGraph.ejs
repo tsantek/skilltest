@@ -1,0 +1,101 @@
+<% if (result[0].name) { %>
+  <div class="all-chart">
+    <h5>Latest Test Result</h5>
+    <canvas id="all-chart">Your browser does not support the canvas feature.</canvas>
+  </div>  
+<% } %>
+
+<script type="text/javascript">
+  Date.prototype.getUnixTime = function() { return this.getTime()/1000|0 };
+  if(!Date.now) Date.now = function() { return new Date(); }
+  Date.time = function() { return Date.now().getUnixTime(); }
+  var dashcanvas = document.getElementById("all-chart");
+  var dashctx = dashcanvas.getContext("2d");
+  var dashresult = <%- JSON.stringify(result); %>;
+  var dashusers = <%- JSON.stringify(user); %>;
+  var dashtests = <%- JSON.stringify(test); %>;
+  
+  var testsStore = dashtests.map(test => {
+    return test.name 
+  });
+  let testResults = {}
+  testsStore.forEach(test => {
+    testResults[test] = {};
+  })
+
+
+
+  dashresult.forEach(test => {
+    if (testResults[test.name][test.user_Name]) {
+      let date1 = new Date(testResults[test.name][test.user_Name].created_at).getUnixTime();
+      let date2 = new Date(test.created_at).getUnixTime();
+      if (date1 < date2) {
+        testResults[test.name][test.user_Name] = test;
+      } 
+    } else {
+      testResults[test.name][test.user_Name] = test;
+    }
+  })
+  let num = 20;
+  let usersData = dashusers.map(user => {
+    const arr = testsStore.map(test => {
+      if (testResults[test][user.name]) {
+        return ((testResults[test][user.name].correct / testResults[test][user.name].total) * 100)
+
+      } else if (testResults[test]) {
+        return 0
+      }
+    })
+    num+=40;
+    return (
+      {
+        label: user.name,
+        fill: true,
+        backgroundColor: `rgb(15, ${num}, 191, 0.3)`,
+        borderColor: `rgb(15, ${num}, 191, .5)`,
+        pointBorderColor: "#fff",
+        pointBackgroundColor: `rgb(15, 56, 191, .5)`,
+        data: arr
+      }
+    )
+  })
+
+
+
+  var myChart = new Chart(dashctx, {
+      type: 'radar',
+      data: {
+          labels: testsStore,
+          // datasets: [{
+          //     label: 'Score',
+          //     data: correct,
+          //     backgroundColor: "rgb(15, 56, 191, 0.5)"
+          // }]
+          datasets: usersData
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        // scales: {
+        //   xAxes: [{
+        //     display: true,
+        //     ticks: {
+        //       beginAtZero: true,
+        //       suggestedMax: 100
+        //     }
+        //   }],
+        //   yAxes: [{
+        //     maxBarThickness: 50
+        //   }]
+        // },
+        title: {
+          display: true,
+            text: 'Latest Test Scores'
+          },
+        legend: {
+          position: 'center'
+        }
+
+      }
+  });
+</script>

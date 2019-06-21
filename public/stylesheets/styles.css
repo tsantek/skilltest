@@ -289,6 +289,22 @@ button:focus {
 .user-chart {
     text-align: center;
 }
+.all-chart {
+    flex-direction: column;
+    display: flex;
+    margin-bottom: 3em;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.all-chart h5 {
+    text-align: center;
+}
+
+#all-chart {
+    width: 1000px;
+}
 
 #test-chart {
     width: 500px;
