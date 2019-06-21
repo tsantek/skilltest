@@ -303,7 +303,7 @@ button:focus {
 }
 
 #all-chart {
-    width: 600px;
+    max-height: 400px;
 }
 
 #test-chart {
