@@ -11,10 +11,8 @@
       label {
         color: white;
       }
-      img {
-        width: 300px;
-        margin-bottom: 1em;
-        border-radius: 1em;
+      #time {
+        font-size: 30px;
       }
     </style>
     <!-- <script>
@@ -29,7 +27,7 @@
   </head>
   <body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
     <div class='main'>
-      <img src='/assets/img/2-minutes.gif'>
+      <div id="time">02:00</div>
       <div class='board user-form'>
         <h3><%=question[0].question%></h3>
         <form id='submit' method="post" action="/taketest/next/<%=test%>/<%=user[0].id%>/<%=question[0].id%>">
@@ -55,6 +53,29 @@
         {
             window.history.forward();
         }
+
+        function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 2,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
 </script>
   </body>
 </html>

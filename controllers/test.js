@@ -130,7 +130,6 @@ module.exports = {
                     resultsIndex = i
                   }
                 }
-                console.log(results[resultsIndex].completed)
                 if (results[resultsIndex].completed == false) {
                   var test = req.params.tid;
                   var question = result;
