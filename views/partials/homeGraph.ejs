@@ -36,7 +36,9 @@
       testResults[test.name][test.user_Name] = test;
     }
   })
-  let num = 20;
+  let num1 = 0;
+  let num2 = 0;
+  let num3 = 191;
   let usersData = dashusers.map(user => {
     const arr = testsStore.map(test => {
       if (testResults[test][user.name]) {
@@ -46,13 +48,16 @@
         return 0
       }
     })
-    num+=40;
+    num2+=100;
+    if (num2 >= 255) {
+      num1+=80;
+    }
     return (
       {
         label: user.name,
         fill: true,
-        backgroundColor: `rgb(15, ${num}, 191, 0.2)`,
-        borderColor: `rgb(15, ${num}, 191, .3)`,
+        backgroundColor: `rgb(${num1}, ${num2}, ${num3}, 0.2)`,
+        borderColor: `rgb(${num1}, ${num2}, ${num3}, .3)`,
         pointBackgroundColor: `rgb(15, 56, 191, .5)`,
         data: arr
       }
@@ -74,7 +79,7 @@
           }
         },
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         legend: {
           position: 'center',
         },
