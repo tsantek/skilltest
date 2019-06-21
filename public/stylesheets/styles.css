@@ -55,6 +55,14 @@ body {
     align-items: center;
 }
 
+.form-check-input {
+    margin-top: .4em;
+}
+
+#submit {
+    margin-top: 1em;
+}
+
 #loginform input,
 #regform input {
     width: 98%;
