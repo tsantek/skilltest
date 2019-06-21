@@ -68,12 +68,16 @@
           datasets: usersData
       },
       options: {
+        scale: {
+          pointLabels: {
+            fontSize: 20
+          }
+        },
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         legend: {
-          position: 'center'
-        }
-
+          position: 'center',
+        },
       }
   });
 </script>
