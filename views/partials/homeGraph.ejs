@@ -51,9 +51,8 @@
       {
         label: user.name,
         fill: true,
-        backgroundColor: `rgb(15, ${num}, 191, 0.3)`,
-        borderColor: `rgb(15, ${num}, 191, .5)`,
-        pointBorderColor: "#fff",
+        backgroundColor: `rgb(15, ${num}, 191, 0.2)`,
+        borderColor: `rgb(15, ${num}, 191, .3)`,
         pointBackgroundColor: `rgb(15, 56, 191, .5)`,
         data: arr
       }
@@ -66,32 +65,11 @@
       type: 'radar',
       data: {
           labels: testsStore,
-          // datasets: [{
-          //     label: 'Score',
-          //     data: correct,
-          //     backgroundColor: "rgb(15, 56, 191, 0.5)"
-          // }]
           datasets: usersData
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        // scales: {
-        //   xAxes: [{
-        //     display: true,
-        //     ticks: {
-        //       beginAtZero: true,
-        //       suggestedMax: 100
-        //     }
-        //   }],
-        //   yAxes: [{
-        //     maxBarThickness: 50
-        //   }]
-        // },
-        title: {
-          display: true,
-            text: 'Latest Test Scores'
-          },
         legend: {
           position: 'center'
         }
